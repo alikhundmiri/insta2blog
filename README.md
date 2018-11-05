@@ -32,7 +32,46 @@ Maintain an Instagram account is much easier when compared to a blog, we are off
 - [ ] 
 
 
-### Work flow:
+#### important links:
+
+* /username/ 
+	* for user home page. with list of all blogs posts.
+* /username/latest/
+	* for user's most recent blog post.
+* /username/first-few-words-of-the-caption
+	* Blog post.
+
+
+#### Can do right now
+* Automate future posts.
+
+
+#### Can't do right now
+* Have custom domain.
+* Generate the previous posts into blog.
+
+
+### Whats free?
+* Blog posts for 5 Future posts.
+
+### What is included in Paid version?
+* Unlimited future posts.
+* Past posts support, *limited posts only*.
+
+
+## Maintaince Costs:
+
+
+
+Expense | Cost | Nature
+------------ | ------------- | -------------
+Heroku | $7 | Monthly
+AWS | $10 | Monthly
+Domain | $15 | Annual
+
+These costs are estimated, and might fluctuate and decrease based on number of users on site.
+
+## Work flow:
 
 #### first sign up.
 
@@ -58,43 +97,15 @@ Maintain an Instagram account is much easier when compared to a blog, we are off
 	* We create a new blog, 
 
 
-#### important links:
-
-* /username/ 
-	* for user home page. with list of all blogs posts.
-* /username/latest/
-	
-
 #### Suggested workflow for customers
 
 1. Post on instagram
 2. Visit the link /username/latest/ from their bio.
 	* this will help us create your blog post faster.
 
+## Issues
 
-#### Can do right now
-* Automate future posts.
+#### Hypothetical issues
+* can't let users have their own domain name
+* post wont be created without someone requesting for it.
 
-
-#### Can't do right now
-* Have custom domain.
-* Generate the previous posts into blog.
-
-
-### Whats free?
-* Blog posts for 5 Future posts.
-
-### What is included in Paid version?
-* Unlimited future posts.
-* Past posts support, *limited posts only*.
-
-## Maintaince Costs:
-
-##### Monthly Recurring Expenses
-
-* **$7** for heroku. *1 dyno for hobby version*
-* **$10** for AWS. *estimated*
-
-##### Annual Recurring Expenses
-
-* **$10** for domain name.
