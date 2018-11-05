@@ -32,6 +32,45 @@ Maintain an Instagram account is much easier when compared to a blog, we are off
 - [ ] 
 
 
+### Work flow:
+
+#### first sign up.
+
+1. customer created an account.
+2. fetch last 5 posts, and create a post of it.
+
+#### Visitor request a client's blog
+
+1. Query the last post 
+2. verify if it is in our database
+	1. if it is in our data base, pass.
+	2. if there is a new post,
+		1. fetch the contents
+		2. create a blog post.
+3. Display
+
+#### User request to post:
+
+1. User creates a post on Instagram
+2. User visits their homepage on our website.
+3. click on **check for latest blogs**.
+4. if there are any new posts,
+	* We create a new blog, 
+
+
+#### important links:
+
+* /username/ 
+	* for user home page. with list of all blogs posts.
+* /username/latest/
+	
+
+#### Suggested workflow for customers
+
+1. Post on instagram
+2. Visit the link /username/latest/ from their bio.
+	* this will help us create your blog post faster.
+
 
 #### Can do right now
 * Automate future posts.
@@ -48,3 +87,14 @@ Maintain an Instagram account is much easier when compared to a blog, we are off
 ### What is included in Paid version?
 * Unlimited future posts.
 * Past posts support, *limited posts only*.
+
+## Maintaince Costs:
+
+##### Monthly Recurring Expenses
+
+* **$7** for heroku. *1 dyno for hobby version*
+* **$10** for AWS. *estimated*
+
+##### Annual Recurring Expenses
+
+* **$10** for domain name.
