@@ -18,30 +18,33 @@ Maintain an Instagram account is much easier when compared to a blog, we are off
 ## Pricing
 **<del>$50</del> $15 a month.**
 
-
-# DEVELOPER WORK
 ---------
 
-## Todo:
+# DEVELOPER WORK
 
--[ ] get 5 interested customer
--[ ] get 10 interested customer
--[ ] get 20 interested customer
--[ ] get 30 interested customer
--[ ] Read Instagram API. 
+### Todo:
 
-## Can do right now
-* Automate future posts
+- [ ] get 5 interested customer
+- [ ] get 10 interested customer
+- [ ] get 20 interested customer
+- [ ] get 30 interested customer
+- [ ] Read Instagram API.
+- [ ] 
 
 
-## Can't do right now
+
+#### Can do right now
+* Automate future posts.
+
+
+#### Can't do right now
 * Have custom domain.
 * Generate the previous posts into blog.
 
 
-## Whats free.
-* Next 5 posts
+### Whats free?
+* Blog posts for 5 Future posts.
 
-## Whats with Paid version
-* Unlimited future posts
+### What is included in Paid version?
+* Unlimited future posts.
 * Past posts support, *limited posts only*.
