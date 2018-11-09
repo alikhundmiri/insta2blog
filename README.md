@@ -13,12 +13,33 @@ The reason most people maintain blog is to have a higher ranking on SEO on Googl
 
 Thats a problem. 
 
-Maintain an Instagram account is much easier when compared to a blog, we are offer you a service to you where we create blog posts for you, and redirect visitors to your relevent sites.
+Maintaining an Instagram account is much easier compared to a maintaining a blog, we are offering a service, where *we create blog posts for you*.
+
+### How will this help me?
+
+By having a blog you rank high on SEO.
+
+Now you can serve people who are looking for something that you are already providing.
+
+### But I already have a blog, and I post updates from that blog, on my Instagram.
+
+Thats great.
+But this service was designed for Instagram users who are looking to get into the blogging focusing on increasing their audience reach though SEO.
+But without the hastle of maintain the whole blog.
 
 ## Pricing
+
 **<del>$50</del> $15 a month.**
 
----------
+#### How do you justify this amount?
+
+Well we automate your blog posts, **saving you time.**
+By using this service you have a better chance of being noticed on interweb, 
+and most importantly,
+- We Do not show ads
+- We Do not sell user data
+- We Do not have bells & whistles
+- And... you'll be supporting a solo-developer.
 
 # DEVELOPER WORK
 

@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	{% block other_meta %}
+
+	{% endblock %}
+
+	<title>{% block title %}Insta2Blog | Blog from your Instagram in one simple step.{% endblock %}</title> <!-- MAX 70 Chars-->
+
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="{% static 'base/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+	<link href="{% static 'base/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+	<!-- Custom styles for this template -->
+	<link href="{% static 'base/css/landing-page.min.css' %}" rel="stylesheet">
+
+	{% block head_extras %}
+	{% endblock %}
+
+	{% if production %}
+	{% endif %}
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	{% include 'navbar.html' %}
+
+	{% block content_1 %}
+	{% endblock %}
+
+	<div class="col-lg-9 col-md-9" style="padding: 50px">{% block content_header %}{% endblock %}</div>
+	<div class="col-lg-3 col-md-3"></div>
+
+
+
+	<!-- Footer -->
+	{% include 'footer.html' %}
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
