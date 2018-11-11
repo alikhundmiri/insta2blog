@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+The doctor will see you now! | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+
+{% block content_1 %}
+
+<!-- Icons Grid -->
+<section class="features-icons bg-light text-center" style="padding-top: 0px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 mx-auto">
+				<img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt="">
+				<br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span>
+				<h1 class="mb-5">One click blog from your Instagram.</h1>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-lg-8">
+				
+				<h3>Oops...</h3>
+				<p class="lead mb-0">Looks like you've caught us in development mode.</p>
+				<p>I am working hard to bring Insta<b class="text-primary">2Blog</b> to life. Things are looking up for this us here, and we should be ready in a few days. If you'd like us to send you a remainder when Insta<b class="text-primary">2Blog</b> is ready, just put your email address below!</p>
+				
+			</div>
+		</div>
+
+	</div>
+</section>
+
+
+{% endblock %}

@@ -12,3 +12,18 @@ def index(request):
 	}
 
 	return render(request, 'landing.html', context)
+
+def collect_email(request, variable):
+
+	print(variable)
+	context = {
+		'show_last_div' : False,
+	}
+	return render(request, 'collect_email.html', context)
+
+
+def paywall_test(request):
+	context = {
+		'show_last_div' : False,
+	}
+	return render(request, 'paywall_test.html', context)

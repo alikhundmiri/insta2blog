@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+The doctor will see you now! | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+
+{% block content_1 %}
+
+<!-- Icons Grid -->
+<section class="features-icons bg-light text-center" style="padding-top: 0px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 mx-auto">
+				<img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt="">
+				<br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span>
+				<h1 class="mb-5">One click blog from your Instagram.</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-5 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">FREE</h2>
+					</div>
+					<h3>1 Post per day.</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>reqular support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'one' %}" class="btn btn-primary">Signup</a>
+					<!-- <p class="lead mb-0"></p> -->
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-5 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">$15 Monthly</h2>
+					</div>
+					<h3>5 Posts per day</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>Dedicated and Prioritised support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'two' %}" class="btn btn-outline-primary">Signup</a>
+
+					<!-- <p class="lead mb-0">Just like a regular day, post on Instagram.</p> -->
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-0 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">$30 Monthly</h2>
+					</div>
+					<h3>Unlimited posts month</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>Dedicated and Prioritised support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'three' %}" class="btn btn-outline-primary">Signup</a>
+
+					<!-- <p class="lead mb-0">We do the rest and create your blog post.</p> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}
