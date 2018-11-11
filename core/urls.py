@@ -25,5 +25,6 @@ app_name = "core"
 urlpatterns = [
 	path('', views.index , name='index'),
 	path('step_1', views.paywall_test , name='paywall_test'),
+	path('thankyou', views.thankyou , name='thankyou'),
 	path('<str:variable>/step_2/', views.collect_email , name='collect_email'),
 ]

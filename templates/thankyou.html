@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}
@@ -26,17 +25,12 @@ The doctor will see you now! | {{ block.super }}
 		<div class="row justify-content-md-center">
 			<div class="col-lg-8">
 				
-				<h3>Oops...</h3>
-				<p class="lead mb-0">Looks like you've caught us in development mode.</p>
-				<p>I am working hard to bring Insta<b class="text-primary">2Blog</b> to life. Things are looking up for this us here, and we should be ready in a few days. If you'd like us to send you a remainder when Insta<b class="text-primary">2Blog</b> is ready, just put your email address below!</p>
+				<h3>Thank you...</h3>
+				<p class="lead mb-0">I am glad you like my product!<br>I will Email you as soon as the product is ready! Till them you can follow me on <a href="https://www.instagram.com/alicodermaker">Instagram</a> and <a href="https:www.twitter.com/alicodermaker"> Twitter.</a></p>
 				
-				<br>
-				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-					{{ form|crispy }}
-					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
-				</form>
 			</div>
 		</div>
+
 	</div>
 </section>
 
