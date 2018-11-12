@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-The doctor will see you now! | {{ block.super }}
+Pricing | {{ block.super }}
 {% endblock %}
 
 {% block head_extras %}
@@ -17,9 +17,10 @@ The doctor will see you now! | {{ block.super }}
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-9 mx-auto">
+				<div style="margin-top: 100px"></div>
 				<!-- <img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt=""> -->
-				<br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span>
-				<h1 class="mb-5">One click blog from your Instagram.</h1>
+				<!-- <br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span> -->
+				<h1 class="mb-5">Pricing</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -36,7 +37,7 @@ The doctor will see you now! | {{ block.super }}
 							<li>Hashtag Mention</li>
 							<li>Username Mention</li>
 						</ul>
-						<li>reqular support</li>
+						<li>Standard Support</li>
 					</ul>
 					<a href="{% url 'core:collect_email' 'one' %}" class="btn btn-primary">Signup</a>
 					<!-- <p class="lead mb-0"></p> -->

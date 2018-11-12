@@ -3,6 +3,7 @@ from django.http import (
 	Http404, HttpResponse, HttpResponsePermanentRedirect, HttpResponseRedirect,
 )
 from django.urls import reverse
+from django.conf import settings
 
 from newsletter.forms import NewsletterForm
 from newsletter.models import newsletter_list
@@ -10,6 +11,7 @@ from newsletter.models import newsletter_list
 def index(request):
 	context = {
 		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
 	}
 
 	return render(request, 'landing.html', context)
@@ -17,9 +19,18 @@ def index(request):
 def thankyou(request):
 	context = {
 		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
 	}
 
 	return render(request, 'thankyou.html', context)
+
+def features(request):
+	context = {
+		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
+	}
+
+	return render(request, 'features.html', context)
 
 def collect_email(request, variable=None):
 
@@ -48,6 +59,7 @@ def collect_email(request, variable=None):
 	context = {
 		'form' : form,
 		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
 	}
 	return render(request, 'collect_email.html', context)
 
@@ -55,5 +67,6 @@ def collect_email(request, variable=None):
 def paywall_test(request):
 	context = {
 		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
 	}
 	return render(request, 'paywall_test.html', context)

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-The doctor will see you now! | {{ block.super }}
+{{ block.super }}
 {% endblock %}
 
 {% block head_extras %}
@@ -64,7 +64,7 @@ The doctor will see you now! | {{ block.super }}
 				<h2 class="mb-4">Interested?</h2>
 			</div>
 			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-				<a href="{% url 'core:collect_email' 'one' %}" class="btn btn-primary btn-lg">Plans and Pricing</a>
+				<a href="{% url 'core:paywall_test' %}" class="btn btn-primary btn-lg">Plans and Pricing</a>
 			</div>
 		</div>
 	</div>

@@ -1,18 +1,14 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	{% block other_meta %}
+	<meta name="description" content="Insta2Blog | One click blog from your Instagram.">
+	<meta name="author" content="Ali Khundmiri">
+	{% block other_meta %}{% endblock %}
 
-	{% endblock %}
-
-	<title>{% block title %}Insta2Blog | Blog from your Instagram in one simple step.{% endblock %}</title> <!-- MAX 70 Chars-->
+	<title>{% block title %}Insta2Blog | One click blog from your Instagram.{% endblock %}</title> <!-- MAX 70 Chars-->
 
 	<!-- Bootstrap core CSS -->
 	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -24,12 +20,16 @@
 
 	<!-- Custom styles for this template -->
 	<link href="{% static 'base/css/landing-page.min.css' %}" rel="stylesheet">
+	{% block head_extras %}{% endblock %}
+	{% if production %}<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129095159-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	{% block head_extras %}
-	{% endblock %}
-
-	{% if production %}
-	{% endif %}
+		gtag('config', 'UA-129095159-1');
+	</script>{% endif %}
 
 </head>
 
@@ -43,16 +43,11 @@
 
 	<!-- <div class="col-lg-9 col-md-9" style="padding: 50px">{% block content_header %}{% endblock %}</div>
 	<div class="col-lg-3 col-md-3"></div>
- -->
-
-
-	<!-- Footer -->
-	{% include 'footer.html' %}
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
-	<script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
+-->
+<!-- Footer -->
+{% include 'footer.html' %}
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
-
 </html>

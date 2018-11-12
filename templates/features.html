@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Get Updates | {{ block.super }}
+Features | {{ block.super }}
 {% endblock %}
 
 {% block head_extras %}
@@ -21,21 +21,19 @@ Get Updates | {{ block.super }}
 				<div style="margin-top: 100px"></div>
 				<!-- <img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt=""> -->
 				<!-- <br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span> -->
-				<h1 class="mb-5">Oops..</h1>
+				<h1 class="mb-5">Features</h1>
 			</div>
 		</div>
 		<div class="row justify-content-md-center">
 			<div class="col-lg-8">
 				
-				<h3 class="text-primary">Looks like you've caught us in development mode.</h3>
-				<!-- <p class="lead mb-0">Looks like you've caught us in development mode.</p> -->
-				<p>I am working hard to bring Insta<b class="text-primary">2Blog</b> to life. Things are looking up for this us here, and we should be ready in a few days. If you'd like us to send you a remainder when Insta<b class="text-primary">2Blog</b> is ready, just put your email address below!</p>
-				
-				<br>
-				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-					{{ form|crispy }}
-					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
-				</form>
+				<h3 class="text-primary">First Version</h3>
+				<p class="lead mb-0">The first version of this website will be very simple. Every time you post, we will create a blog post for, on our website.<br>For example, if your account on instagram is <span class="text-primary">@AliCoderMaker</span>, then your blog posts will be on <span class="text-primary">https://www.insta2blog.com/AliCoderMaker.</span></p>
+				<br><br>
+				<p class="lead mb-0">Custom Markup for the blog will be available for all users.</p>
+
+				<br><br>
+				<p>Check out our <a href="{% url 'core:paywall_test' %}">Pricing and Plans</a></p>
 			</div>
 		</div>
 	</div>
