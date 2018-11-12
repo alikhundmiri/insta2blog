@@ -18,7 +18,7 @@ class newsletter_list(models.Model):
 	updated					=			models.DateTimeField(auto_now=True, auto_now_add=False)
 
 	def __str__(self):
-		return(self.email_address + " " + self.user_name)
+		return(self.email_address)
 
 	class Meta:
 		ordering	 		=			["-timestamp", "-updated"]

@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh-r8q0h^8n+ryy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-PRODUCTION = False
+DEBUG = False
+PRODUCTION = True
 
 ALLOWED_HOSTS = [
 'https://insta2blog.herokuapp.com',
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
 'insta2blog.herokuapp.com',
 'https://insta2blog.com',
 'http://insta2blog.com',
+'www.insta2blog.com',
 'insta2blog.com',
 'http://127.0.0.1:8000/',
 '127.0.0.1',
