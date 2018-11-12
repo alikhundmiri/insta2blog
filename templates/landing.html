@@ -5,6 +5,32 @@
 {{ block.super }}
 {% endblock %}
 
+
+{% block other_meta %}
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta name="twitter:site" content="@AliCoderMaker">
+
+	<meta name="twitter:creator" content="@AliCoderMaker">
+
+	<meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
+
+	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
+
+	<meta name="twitter:title" content="Insta2Blog | One click blog from your Instagram.">
+
+	<meta property="og:title" content="Insta2Blog | One click blog from your Instagram.">
+
+	<meta name="twitter:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">
+
+	<meta property="og:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">	
+
+{% endblock %}
+
+
 {% block head_extras %}
 {{ form.media }}
 {% endblock %}
