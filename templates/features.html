@@ -31,9 +31,22 @@ Features | {{ block.super }}
 				<p class="lead mb-0">The first version of this website will be very simple. Every time you post, we will create a blog post for, on our website.<br>For example, if your account on instagram is <span class="text-primary">@AliCoderMaker</span>, then your blog posts will be on <span class="text-primary">https://www.insta2blog.com/AliCoderMaker.</span></p>
 				<br><br>
 				<p class="lead mb-0">Custom Markup for the blog will be available for all users.</p>
-
-				<br><br>
-				<p>Check out our <a href="{% url 'core:paywall_test' %}">Pricing and Plans</a></p>
+				<!-- <p>Check out our <a href="{% url 'core:paywall_test' %}">Pricing and Plans</a></p> -->
+			</div>
+		</div>
+		<div style="margin-top: 100px"></div>
+		<div class="row">
+			<div class="col-xl-6">
+				<h4>Stay in loop</h4>
+				<p>
+					To follow the development and updates of Insta2Blog, drop your email address here! I promise I won't spam you.
+				</p>
+			</div>
+			<div class="col-xl-6">				
+				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+					{{ form|crispy }}
+					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
+				</form>
 			</div>
 		</div>
 	</div>

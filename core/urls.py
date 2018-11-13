@@ -26,6 +26,7 @@ urlpatterns = [
 	path('', views.index , name='index'),
 	path('features', views.features , name='features'),
     path('step_1', views.paywall_test , name='paywall_test'),
-	path('thankyou', views.thankyou , name='thankyou'),
+    path('thankyou', views.thankyou , name='thankyou'),
+	path('newsletter_signup', views.newsletter_signup , name='newsletter_signup'),
 	path('<str:variable>/step_2/', views.collect_email , name='collect_email'),
 ]

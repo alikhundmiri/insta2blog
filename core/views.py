@@ -25,12 +25,42 @@ def thankyou(request):
 	return render(request, 'thankyou.html', context)
 
 def features(request):
+	
+	if request.method == 'POST':
+		form = NewsletterForm(request.POST or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.threshold = newsletter_list.THRESHOLD_LIST[0][0]
+			instance.save()
+			return HttpResponseRedirect(reverse('core:thankyou'))
+	else:
+		form = NewsletterForm()
 	context = {
+		'form' : form,
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}
 
 	return render(request, 'features.html', context)
+
+def newsletter_signup(request):
+	if request.method == 'POST':
+		form = NewsletterForm(request.POST or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.threshold = newsletter_list.THRESHOLD_LIST[0][0]
+			instance.save()
+			return HttpResponseRedirect(reverse('core:thankyou'))
+	else:
+		form = NewsletterForm()
+
+
+	context = {
+		'form' : form,
+		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
+	}
+	return render(request, 'newsletter_signup.html', context)
 
 def collect_email(request, variable=None):
 
@@ -65,7 +95,17 @@ def collect_email(request, variable=None):
 
 
 def paywall_test(request):
+	if request.method == 'POST':
+		form = NewsletterForm(request.POST or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.threshold = newsletter_list.THRESHOLD_LIST[0][0]
+			instance.save()
+			return HttpResponseRedirect(reverse('core:thankyou'))
+	else:
+		form = NewsletterForm()
 	context = {
+		'form' : form,
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}

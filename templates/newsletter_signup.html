@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+Get Updates | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+
+{% block content_1 %}
+
+<!-- Icons Grid -->
+<section class="features-icons bg-light text-center" style="padding-top: 0px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 mx-auto">
+				<div style="margin-top: 100px"></div>
+				<!-- <img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt=""> -->
+				<!-- <br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span> -->
+				<h1 class="mb-5">Keep you in the loop.</h1>
+			</div>
+		</div>
+		<div class="row justify-content-md-center">
+			<div class="col-lg-8">
+				<h3 class="text-primary">Thank you for showing Interest</h3>
+				<!-- <p class="lead mb-0">Looks like you've caught us in development mode.</p> -->
+				<p>Insta<b class="text-primary">2Blog</b> will be build on 17th November, during <a href="">#24HrStartup</a>. you can catch the action live.<br><br>Also, If you are interested in learning more about Insta<b class="text-primary">2Blog</b> ,you can drop your email address below, and I will keep you upto date.<br>I promise you won't be spammed!</p>
+				<br>
+				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+					{{ form|crispy }}
+					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+{% endblock %}

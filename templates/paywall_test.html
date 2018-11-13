@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}
@@ -82,6 +83,21 @@ Pricing | {{ block.super }}
 
 					<!-- <p class="lead mb-0">We do the rest and create your blog post.</p> -->
 				</div>
+			</div>
+		</div>
+		<div style="margin-top: 100px"></div>
+		<div class="row">
+			<div class="col-xl-6">
+				<h4>Stay in loop</h4>
+				<p>
+					To follow the development and updates of Insta2Blog, drop your email address here! I promise I won't spam you.
+				</p>
+			</div>
+			<div class="col-xl-6">				
+				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+					{{ form|crispy }}
+					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
+				</form>
 			</div>
 		</div>
 	</div>
