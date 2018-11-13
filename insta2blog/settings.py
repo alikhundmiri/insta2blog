@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh-r8q0h^8n+ryy'
 
+SECRET_KEY = os.environ.get('SECRET_KEY', 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh-r8q0h^8n+ryy')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 PRODUCTION = True
@@ -158,8 +158,10 @@ USE_TZ = True
 CUSTOM_PROJECT_NAME = "insta2blog"
 
 AWS_STORAGE_BUCKET_NAME = 'side-projects'
-AWS_ACCESS_KEY_ID = 'AKIAI4AXWQFXLSUF3B4Q'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
+
+
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).

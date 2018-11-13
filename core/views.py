@@ -9,7 +9,17 @@ from newsletter.forms import NewsletterForm
 from newsletter.models import newsletter_list
 # LANDING PAGE
 def index(request):
+	if request.method == 'POST':
+		form = NewsletterForm(request.POST or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.threshold = newsletter_list.THRESHOLD_LIST[0][0]
+			instance.save()
+			return HttpResponseRedirect(reverse('core:thankyou'))
+	else:
+		form = NewsletterForm()
 	context = {
+		'form' : form,
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}

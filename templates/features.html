@@ -28,9 +28,44 @@ Features | {{ block.super }}
 			<div class="col-lg-8">
 				
 				<h3 class="text-primary">First Version</h3>
-				<p class="lead mb-0">The first version of this website will be very simple. Every time you post, we will create a blog post for, on our website.<br>For example, if your account on instagram is <span class="text-primary">@AliCoderMaker</span>, then your blog posts will be on <span class="text-primary">https://www.insta2blog.com/AliCoderMaker.</span></p>
+				<p class="lead mb-0">The first version of this website will be very simple. Every time you post, we will create a blog post for, on our website.<br>For example, if your account on instagram is <span class="text-primary">@<b>AliCoderMaker</b></span>, then your blog posts will be on <span class="text-primary">insta2blog.com/<b>AliCoderMaker</b>.</span></p>
 				<br><br>
 				<p class="lead mb-0">Custom Markup for the blog will be available for all users.</p>
+<br>
+<h4>For example:</h4><br>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">on Instagram</th>
+							<th scope="col">on Blog</th>
+							<th scope="col">Explain</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>@alicodermaker</td>
+							<td><a target="_blank" href="https://www.instagram.com/alicodermaker">@alicodermaker</a></td>
+							<td>Links will automatically be created to send visitor towards instagram.</td>
+
+
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>#Blogger</td>
+							<td><a target="_blank" href="https://www.instagram.com/explore/tags/blogger/">#Blogger</a></td>
+							<td>Each hashtag will be changed to links, directing to said hashtag.</td>
+
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>For more info, check Link In bio</td>
+							<td>For more info, <a target="_blank" href="http://insta2blog.com/?ref=insta2blog">click here</a></td>
+							<td>Depending on the link in your Instagram's bio, at the time of posting, this redirect to the link in your bio.</td>
+						</tr>
+					</tbody>
+				</table>
 				<!-- <p>Check out our <a href="{% url 'core:paywall_test' %}">Pricing and Plans</a></p> -->
 			</div>
 		</div>

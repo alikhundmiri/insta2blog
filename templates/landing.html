@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}
@@ -8,25 +9,25 @@
 
 {% block other_meta %}
 
-	<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image">
 
-	<meta name="twitter:site" content="@AliCoderMaker">
+<meta name="twitter:site" content="@AliCoderMaker">
 
-	<meta name="twitter:creator" content="@AliCoderMaker">
+<meta name="twitter:creator" content="@AliCoderMaker">
 
-	<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
 
-	<meta property="og:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
+<meta property="og:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
 
-	<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
+<meta name="twitter:image" content="https://s3.amazonaws.com/side-projects/insta2blog/static/base/img/insta2blog-card-1.png">
 
-	<meta name="twitter:title" content="Insta2Blog | One click blog from your Instagram.">
+<meta name="twitter:title" content="Drive Traffic to your Instagram, from Google SEO.">
 
-	<meta property="og:title" content="Insta2Blog | One click blog from your Instagram.">
+<meta property="og:title" content="Drive Traffic to your Instagram, from Google SEO.">
 
-	<meta name="twitter:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">
+<meta name="twitter:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">
 
-	<meta property="og:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">	
+<meta property="og:description" content="Insta2Blog helps you drive traffic from Google Search to your Instagram Posts, by automatically creating a blog everytime you post on Instagram">	
 
 {% endblock %}
 
@@ -80,9 +81,7 @@
 	</div>
 </section>
 
-
-<!-- Call to Action -->
-<section class="call-to-action text-white text-center">
+<!-- <section class="call-to-action text-white text-center">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
@@ -94,6 +93,164 @@
 			</div>
 		</div>
 	</div>
+</section> -->
+
+
+
+<section class="showcase">
+	<div class="container-fluid p-0">
+		<div class="row no-gutters">
+			<div class="col-lg-6 order-lg-2 my-auto showcase-text">
+				<h2>"Link In Bio"</h2>
+				<p class="lead mb-0">With aim to help with your mission on Instagram, we have implemented a few features. Link for instance, <i>Link in bio</i>. When your write Link in bio in your caption, those text will become a link on the blog, redirecting your visitors to the link, thats in your bio, at the time of posting on instagram.</p>
+			</div>
+			<div class="col-lg-6 order-lg-1 text-white showcase-img">
+				<img src="{% static 'base/img/explained_1.png' %}" class="img-fluid" alt="Responsive image">
+			</div>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+				<h2>Instagram Hashtags or User Mentions.</h2>
+				<p class="lead mb-0">Credit is due where its due.</p>
+				<p class="lead mb-0">If you mention a user or Hashtag in your caption, Insta2blog will automatically convert those mentions to links, which upon clicking will redirect your visitor to the mention's page on Instagram.</p>
+			</div>
+			<div class="col-lg-6 order-lg-2 text-white showcase-img" >
+				<img src="{% static 'base/img/explained_2.png' %}" class="img-fluid" alt="Responsive image">
+			</div>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-lg-6 order-lg-2 my-auto showcase-text">
+				<h2>Customer Support</h2>
+				<p class="lead mb-0">Me being an Indie developer, I can always be there for you.<br>Need a few feature? if enough people want it, it can be done. By using this service, you are helping an Indiedev!</p>
+			</div>
+			<div class="col-lg-6 order-lg-1 text-white showcase-img">
+				<img src="{% static 'base/img/bg-showcase-3.jpg' %}" class="img-fluid" alt="Responsive image">
+			</div>
+		</div>
+	</div>
 </section>
+
+<!-- Testimonials -->
+<section class="testimonials text-center bg-light">
+	<div class="container">
+		<h2 class="mb-5">What people are saying...</h2>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+					<img class="img-fluid rounded-circle mb-3" src="{% static 'base/img/omgshecodes.jpg' %}" alt="">
+					<h5><a target='_blank' href="https://www.instagram.com/omgshecodes/">Yas <br><small>omgshecodes</small></a></h5>
+					<p class="font-weight-light mb-0">"I need this real bad"</p>
+				</div>
+			</div>
+			<!-- <div class="col-lg-4">
+				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+					<img class="img-fluid rounded-circle mb-3" src="{% static 'base/img/testimonials-2.jpg' %}" alt="">
+					<h5>Fred S.</h5>
+					<p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+				</div>
+			</div> -->
+			<!-- <div class="col-lg-4">
+				<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+					<img class="img-fluid rounded-circle mb-3" src="{% static 'base/img/testimonials-3.jpg' %}" alt="">
+					<h5>Sarah	W.</h5>
+					<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</section>
+
+
+<section class="features-icons bg-light text-center" style="padding-top: 0px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 mx-auto">
+				<div style="margin-top: 100px"></div>
+				<!-- <img class="img-fluid mb-3" width="40%" src="{% static 'base/img/LogoMakr_5MpNGv.png' %}" alt=""> -->
+				<!-- <br><span style="font-size: 80px;">Insta<b class="text-primary">2Blog</b></span> -->
+				<h1 class="mb-5">Pricing</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-5 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">FREE</h2>
+					</div>
+					<h3>1 Post per day.</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>Standard Support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'one' %}" class="btn btn-primary">Signup</a>
+					<!-- <p class="lead mb-0"></p> -->
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-5 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">$15 Monthly</h2>
+					</div>
+					<h3>5 Posts per day</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>Dedicated and Prioritised support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'two' %}" class="btn btn-outline-primary">Signup</a>
+
+					<!-- <p class="lead mb-0">Just like a regular day, post on Instagram.</p> -->
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="features-icons-item mx-auto mb-0 mb-lg-3">
+					<div class="features-icons-icon d-flex">
+						<h2 class="m-auto text-primary">$30 Monthly</h2>
+					</div>
+					<h3>Unlimited posts month</h3>
+					<ul style="text-align: left;">
+						<li>Link generation in caption</li>
+						<ul>
+							<li>link in bio</li>
+							<li>Hashtag Mention</li>
+							<li>Username Mention</li>
+						</ul>
+						<li>Dedicated and Prioritised support</li>
+					</ul>
+					<a href="{% url 'core:collect_email' 'three' %}" class="btn btn-outline-primary">Signup</a>
+
+					<!-- <p class="lead mb-0">We do the rest and create your blog post.</p> -->
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: 100px"></div>
+<!-- Call to Action -->
+
+		<div class="row">
+			<div class="col-xl-6">
+				<h4>Stay in loop</h4>
+				<p>
+					To follow the development and updates of Insta2Blog, drop your email address here! I promise I won't spam you.
+				</p>
+			</div>
+			<div class="col-xl-6">				
+				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+					{{ form|crispy }}
+					<input type='submit' class='btn btn-outline-primary btn-lg' value='submit'/>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 {% endblock %}
