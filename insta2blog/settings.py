@@ -31,6 +31,8 @@ ALLOWED_HOSTS = [
 'https://insta2blog.herokuapp.com',
 'http://insta2blog.herokuapp.com',
 'insta2blog.herokuapp.com',
+'https://www.insta2blog.com',
+'http://www.insta2blog.com',
 'https://insta2blog.com',
 'http://insta2blog.com',
 'www.insta2blog.com',

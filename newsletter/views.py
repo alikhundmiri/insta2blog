@@ -24,7 +24,7 @@ def index(request):
 		'production' : settings.PRODUCTION,
 	}
 
-	return render(request, 'landing.html', context)
+	return render(request, 'newsletter/landing.html', context)
 
 def thankyou(request):
 	context = {
@@ -32,7 +32,7 @@ def thankyou(request):
 		'production' : settings.PRODUCTION,
 	}
 
-	return render(request, 'thankyou.html', context)
+	return render(request, 'newsletter/thankyou.html', context)
 
 def features(request):
 	
@@ -51,7 +51,7 @@ def features(request):
 		'production' : settings.PRODUCTION,
 	}
 
-	return render(request, 'features.html', context)
+	return render(request, 'newsletter/features.html', context)
 
 def newsletter_signup(request):
 	if request.method == 'POST':
@@ -70,7 +70,7 @@ def newsletter_signup(request):
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}
-	return render(request, 'newsletter_signup.html', context)
+	return render(request, 'newsletter/newsletter_signup.html', context)
 
 def collect_email(request, variable=None):
 
@@ -101,7 +101,7 @@ def collect_email(request, variable=None):
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}
-	return render(request, 'collect_email.html', context)
+	return render(request, 'newsletter/collect_email.html', context)
 
 
 def paywall_test(request):
@@ -119,4 +119,4 @@ def paywall_test(request):
 		'show_last_div' : False,
 		'production' : settings.PRODUCTION,
 	}
-	return render(request, 'paywall_test.html', context)
+	return render(request, 'newsletter/paywall_test.html', context)

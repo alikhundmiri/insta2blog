@@ -62,7 +62,7 @@ Besides these, here are a few more pointers
 
 #### Can't do right now
 * Have custom domain. <i>Soon</i>
-* Generate the previously published Instagram posts into blog <i>(Contact for enquiries)[https://www.twitter.com/alicodermaker]</i>.
+* Generate the previously published Instagram posts into blog <i>[Contact for enquiries](https://www.twitter.com/alicodermaker)</i>.
 
 
 ### Whats free?
