@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-PRODUCTION = False
+PRODUCTION = True
 
 ALLOWED_HOSTS = [
 'https://insta2blog.herokuapp.com',
