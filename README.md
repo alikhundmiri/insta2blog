@@ -29,31 +29,24 @@ But without the hastle of maintain the whole blog.
 
 ## Pricing
 
+There are two paid versions, along with the free version
+
+**<del>$100</del> $30 a month.**
 **<del>$50</del> $15 a month.**
+
 
 #### How do you justify this amount?
 
-Well we automate your blog posts, **saving you time.**
-By using this service you have a better chance of being noticed on interweb, 
-and most importantly,
+Well we create your blog posts, make sure it looks pretty, and has a good format, all while **saving your time.**
+By using this service everyone has a better chance of being noticed on interweb.
+
+Besides these, here are a few more pointers
+
 - We Do not show ads
 - We Do not sell user data
-- We Do not have bells & whistles
 - And... you'll be supporting a solo-developer.
 
-# DEVELOPER WORK
-
-### Todo:
-
-- [ ] get 5 interested customer
-- [ ] get 10 interested customer
-- [ ] get 20 interested customer
-- [ ] get 30 interested customer
-- [ ] Read Instagram API.
-- [ ] 
-
-
-#### important links:
+# Important links:
 
 * /username/ 
 	* for user home page. with list of all blogs posts.
@@ -64,21 +57,28 @@ and most importantly,
 
 
 #### Can do right now
-* Automate future posts.
+* Generate blog posts when ever you post on Instagram.
 
 
 #### Can't do right now
-* Have custom domain.
-* Generate the previous posts into blog.
+* Have custom domain. <i>Soon</i>
+* Generate the previously published Instagram posts into blog <i>(Contact for enquiries)[https://www.twitter.com/alicodermaker]</i>.
 
 
 ### Whats free?
-* Blog posts for 5 Future posts.
+* One blog post per day.
+
 
 ### What is included in Paid version?
-* Unlimited future posts.
-* Past posts support, *limited posts only*.
 
+#### $15/ Month
+* 5 blog posts per day.
+
+#### $30/ Month
+* Unlimited blog posts.
+
+
+*NOTE: During the first few version, you may have to visit your blog right after posting, to confirm a blog was generated.*
 
 ## Maintaince Costs:
 
@@ -120,7 +120,7 @@ These costs are estimated, and might fluctuate and decrease based on number of u
 
 #### Suggested workflow for customers
 
-1. Post on instagram
+1. Post on Instagram
 2. Visit the link /username/latest/ from their bio.
 	* this will help us create your blog post faster.
 
@@ -129,4 +129,3 @@ These costs are estimated, and might fluctuate and decrease based on number of u
 #### Hypothetical issues
 * can't let users have their own domain name
 * post wont be created without someone requesting for it.
-

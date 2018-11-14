@@ -10,6 +10,14 @@
 
 	<title>{% block title %}Insta2Blog | One click blog from your Instagram.{% endblock %}</title> <!-- MAX 70 Chars-->
 
+	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'base/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'base/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'base/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'base/site.webmanifest' %}">
+	<link rel="mask-icon" href="{% static 'base/safari-pinned-tab.svg' %}" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+
 	<!-- Bootstrap core CSS -->
 	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -34,16 +42,43 @@
 	
 
 	
-<!-- {% static 'base/img/insta2blog-card-1.png' %} -->
+	<!-- {% static 'base/img/insta2blog-card-1.png' %} -->
 </head>
 
 <body>
+	<!-- This script is for Facebook login. This is nesessary to use Instagram account, since the launch of new Facebook Graph Instagram API-->
 
-	<!-- Navigation -->
-	{% include 'navbar.html' %}
+<!-- 
+NOTE FROM FACEBOOK DOCUMENTS
+The Facebook SDK for JavaScript doesn't have any standalone files that need to be downloaded or installed, instead you simply need to include a short piece of regular JavaScript in your HTML that will asynchronously load the SDK into your pages. The async load means that it does not block loading other elements of your page.
+The following snippet of code will give the basic version of the Facebook SDK for JavaScript where the options are set to their most common defaults. Insert the following code snippet directly after the opening <body> tag on each page you want to use Facebook Analytics. Replace {your-app-id} with the App ID and {api-version} with the version of the API you are targeting. The current version isv3.2.
+-->
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '510918386043485',
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v3.2'
+		});
+		
+		FB.AppEvents.logPageView();   
+		
+	};
 
-	{% block content_1 %}
-	{% endblock %}
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- Navigation -->
+{% include 'navbar.html' %}
+
+{% block content_1 %}
+{% endblock %}
 
 	<!-- <div class="col-lg-9 col-md-9" style="padding: 50px">{% block content_header %}{% endblock %}</div>
 	<div class="col-lg-3 col-md-3"></div>

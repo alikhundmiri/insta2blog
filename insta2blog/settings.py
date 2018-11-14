@@ -23,8 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh-r8q0h^8n+ryy')
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = False
-PRODUCTION = True
+PRODUCTION = False
 
 ALLOWED_HOSTS = [
 'https://insta2blog.herokuapp.com',
