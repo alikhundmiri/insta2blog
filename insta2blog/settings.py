@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
 'insta2blog.com',
 'http://127.0.0.1:8000/',
 '127.0.0.1',
+'localhost:8000/',
+'localhost'
 ]
 
 
@@ -47,7 +49,8 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'newsletter',
     'core',
-    
+    'testing',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

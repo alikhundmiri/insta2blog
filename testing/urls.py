@@ -17,19 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic.base import TemplateView
 
+from . import views
+
+app_name = "testing"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    
-    path('', include('newsletter.urls', namespace='newsletter')),
-    path('t', include('testing.urls', namespace='testing')),
-    path('privacy_policy', TemplateView.as_view(template_name='privacy_policy.html') , name='privacy_policy'),
-    path('term_of_use', TemplateView.as_view(template_name='term_of_use.html') , name='term_of_use'),
+	path('', views.index , name='index'),
 ]
-
-
-if settings.DEBUG:
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
