@@ -1,25 +1,26 @@
-# insta2blog
-Create your blog post right from instagram.
+# [insta2blog](http://insta2blog.com)
+
+Create your blog post right from Instagram.
 
 ## How will it work?
 
-Every time you create a post on instagram, we will create the same post as a blog for you.
+Every time you create a post on Instagram, we will create the same post as a blog for you.
 
 ### That's neat, but why?
 
 Targeted towards small businesses of 1-4 people, we understand how hard it is to generate content on multiple platforms.
 
-The reason most people maintain blog is to have a higher ranking on SEO on Google. But when your main work is on instagram, *no matter how many posts you have,* you won't rank high on google Search, in fact you may never show up when people search for your keywords.
+The reason most people maintain blog is to have a higher ranking on Google SEO. But when your core work is on Instagram, *no matter how many posts you have,* you won't rank high on Google Search, in fact you may never show up when people search for your keywords related to your content.
 
-Thats a problem. 
+Thats a problem.
 
 Maintaining an Instagram account is much easier compared to a maintaining a blog, we are offering a service, where *we create blog posts for you*.
 
 ### How will this help me?
 
-By having a blog you rank high on SEO.
+By having a blog you will rank higher on SEO.
 
-Now you can serve people who are looking for something that you are already providing.
+Now you can reach to people who are searching for your keywords online, and provide them with value.
 
 ### But I already have a blog, and I post updates from that blog, on my Instagram.
 
@@ -32,6 +33,7 @@ But without the hastle of maintain the whole blog.
 There are two paid versions, along with the free version
 
 **<del>$100</del> $30 a month.**
+
 **<del>$50</del> $15 a month.**
 
 
