@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('newsletter.urls', namespace='newsletter')),
+    path('privacy_policy', TemplateView.as_view(template_name='privacy_policy.html') , name='privacy_policy'),
+    path('term_of_use', TemplateView.as_view(template_name='term_of_use.html') , name='term_of_use'),
 ]
 
 
