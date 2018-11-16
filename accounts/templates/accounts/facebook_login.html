@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %}
+{{top_text}} | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}{% endblock %}
+
+{% block content_2 %}
+<div class="row">
+	<div class="col">
+		<h3>{{top_text}}</h3>
+		<h3><small>{{form_text}}</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		
+		<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+		<br>
+		<br>
+		<a href="{% url 'accounts:profile' %}">Continue</a>
+
+	</div>
+</div>
+{% endblock %}
+
+

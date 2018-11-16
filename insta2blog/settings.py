@@ -49,7 +49,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'newsletter',
     'core',
-    'testing',
+    'accounts',
 
     'django.contrib.admin',
     'django.contrib.auth',

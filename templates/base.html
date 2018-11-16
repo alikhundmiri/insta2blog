@@ -38,14 +38,11 @@
 
 		gtag('config', 'UA-129095159-1');
 	</script>{% endif %}
-
-	
-
-	
-	<!-- {% static 'base/img/insta2blog-card-1.png' %} -->
 </head>
 
 <body>
+
+	{% if request.user.is_authenticated %}
 	<!-- This script is for Facebook login. This is nesessary to use Instagram account, since the launch of new Facebook Graph Instagram API-->
 
 <!-- 
@@ -62,7 +59,10 @@ The following snippet of code will give the basic version of the Facebook SDK fo
 			version    : 'v3.2'
 		});
 		
-		FB.AppEvents.logPageView();   
+		FB.AppEvents.logPageView();
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
 		
 	};
 
@@ -74,14 +74,26 @@ The following snippet of code will give the basic version of the Facebook SDK fo
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 </script>
+{% endif %}
 <!-- Navigation -->
 {% include 'navbar.html' %}
 
 {% block content_1 %}
 {% endblock %}
 
-	<!-- <div class="col-lg-9 col-md-9" style="padding: 50px">{% block content_header %}{% endblock %}</div>
-	<div class="col-lg-3 col-md-3"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-md-2"></div>
+		<div class="col-lg-6 col-md-8 col-sm-12">
+			<!-- content -->
+			{% block content_2 %}
+			{% endblock %}
+		</div>
+		<div class="col-lg-3 col-md-3"></div>
+	</div>
+</div>
+<!-- <div class="col-lg-9 col-md-9" style="padding: 50px">{% block content_header %}{% endblock %}</div>
+<div class="col-lg-3 col-md-3"></div>
 -->
 <!-- Footer -->
 {% include 'footer.html' %}
