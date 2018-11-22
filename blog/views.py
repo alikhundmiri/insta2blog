@@ -7,10 +7,12 @@ from django.urls import reverse
 def index(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect(reverse('newsletter:index'))
+	# else:
+	# 	return HttpResponseRedirect(reverse('accounts:profile'))
 		pass
 	context = {
 		'production' : settings.PRODUCTION,
-
+		'requested_user' : request.user.username,
 	}
 	return render(request, 'blog/blog_list.html', context)
 

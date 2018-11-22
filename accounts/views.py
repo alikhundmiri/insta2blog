@@ -34,7 +34,7 @@ def login_view(request):
 		login(request,user)
 		if next == "":
 			# return HttpResponseRedirect("/")
-			return HttpResponseRedirect(reverse('accounts:profile'))
+			return HttpResponseRedirect(reverse('blog:index'))
 		else:
 			return HttpResponseRedirect(next)
 
@@ -54,7 +54,7 @@ def login_view(request):
 
 def register_view(request):
 	if request.user.is_authenticated:
-		return HttpResponseRedirect(reverse('accounts:profile'))
+		return HttpResponseRedirect(reverse('blog:index'))
 	next = ""
 
 	if request.GET:
@@ -109,7 +109,7 @@ def facebook(request):
 		instance = form.save(commit=False)
 		instance.save()
 		if next == "":
-			return HttpResponseRedirect(reverse('accounts:profile'))
+			return HttpResponseRedirect(reverse('blog:index'))
 		else:
 			return HttpResponseRedirect(next)
 
