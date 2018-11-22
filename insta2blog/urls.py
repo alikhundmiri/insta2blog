@@ -25,8 +25,11 @@ from accounts.views import (login_view, logout_view, register_view)
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('', include('newsletter.urls', namespace='newsletter')),
+    path('', include('blog.urls', namespace='blog')),
+    path('welcome/', include('newsletter.urls', namespace='newsletter')),
     path('account/', include('accounts.urls', namespace='accounts')),
+    
+
     path('privacy_policy', TemplateView.as_view(template_name='privacy_policy.html') , name='privacy_policy'),
     path('term_of_use', TemplateView.as_view(template_name='term_of_use.html') , name='term_of_use'),
 

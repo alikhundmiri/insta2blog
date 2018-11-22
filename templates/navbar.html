@@ -10,9 +10,16 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'logout' %}">logout</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'blog:blog_list' request.user.username %}">Blog</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'blog:blog_latest' request.user.username %}">latest</a>
+			</li>
+			
 			{% else %}
 			<li class="nav-item">
-				<a class="nav-link" href="{% url 'register' %}">New User</a>
+				<a class="nav-link" href="{% url 'register' %}">Signup</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'login' %}">Login</a>
@@ -20,6 +27,7 @@
 			{% endif %}
 		</ul> 
 	</div>
+
 	{% comment %}<li class="nav-item active">
 		<a class="nav-link" href="{% url 'newsletter:index' %}">Home </a>
 	</li>

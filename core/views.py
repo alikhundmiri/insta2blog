@@ -4,3 +4,13 @@ from django.http import (
 )
 from django.urls import reverse
 from django.conf import settings
+
+# LANDING PAGE
+def new_blog(request):
+	
+	context = {
+		'show_last_div' : False,
+		'production' : settings.PRODUCTION,
+	}
+
+	return render(request, 'core/user_profile.html', context)

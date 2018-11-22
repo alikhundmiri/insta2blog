@@ -15,9 +15,11 @@ from django.contrib.auth import (
 )
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 
-from .forms import UserLoginForm, UserRegisterForm
+from .forms import UserLoginForm, UserRegisterForm, InstaIDForm
 # from accounts.forms import ProfileForm, EditProfileForm
 def login_view(request):
+	if request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('accounts:profile'))
 	next = ""
 
 	if request.GET:  
@@ -31,8 +33,8 @@ def login_view(request):
 		user = authenticate(username=username, password=password)
 		login(request,user)
 		if next == "":
-			return HttpResponseRedirect("/")
-			# return HttpResponseRedirect(reverse('user:home'))
+			# return HttpResponseRedirect("/")
+			return HttpResponseRedirect(reverse('accounts:profile'))
 		else:
 			return HttpResponseRedirect(next)
 
@@ -51,6 +53,8 @@ def login_view(request):
 	return render(request, 'accounts/login.html', context)
 
 def register_view(request):
+	if request.user.is_authenticated:
+		return HttpResponseRedirect(reverse('accounts:profile'))
 	next = ""
 
 	if request.GET:
@@ -95,13 +99,27 @@ def settings_page(request):
 
 @login_required
 def facebook(request):
-	# fetch bio and profession
-	# ?fetch username
+	next = ''
+	if request.GET:  
+		next = request.GET['next']
+
+	form = InstaIDForm(request.POST or None)
+	if form.is_valid():
+		insta_id = form.cleaned_data.get("insta_id")
+		instance = form.save(commit=False)
+		instance.save()
+		if next == "":
+			return HttpResponseRedirect(reverse('accounts:profile'))
+		else:
+			return HttpResponseRedirect(next)
+
+
 	context = {
+		'form' : form,
 		'top_text' : 'Login to facebook',
 		'form_text' : 'For accessing to instagram account, we need to login via your facebook, if you are already logged in, click "Continue"',
 		'production' : settings.PRODUCTION,
-		# 'tab_text' : 'Submit',
+		'tab_text' : 'Submit',
 
 	}
 	return render(request, 'accounts/facebook_login.html', context)

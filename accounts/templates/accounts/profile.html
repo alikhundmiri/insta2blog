@@ -4,7 +4,7 @@
 
 
 {% block title %}
-{{top_text}} | {{ block.super }}
+{{request.user.username}}'s Profile | {{ block.super }}
 {% endblock %}
 
 {% block head_extras %}{% endblock %}
@@ -12,8 +12,8 @@
 {% block content_2 %}
 <div class="row">
 	<div class="col">
-		<h3>Your profile {{request.user.username}}</h3>
-		<h3><small>Here you can choose which posts to turn into blogs</small></h3>
+		<h3>Welcome {{request.user.username}}</h3>
+		<h3><small>You have # blogs published</small></h3>
 	</div>
 </div>
 <section>
