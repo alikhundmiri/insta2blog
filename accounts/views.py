@@ -16,6 +16,9 @@ from django.contrib.auth import (
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 
 from .forms import UserLoginForm, UserRegisterForm, InstaIDForm
+
+import requests
+
 # from accounts.forms import ProfileForm, EditProfileForm
 def login_view(request):
 	if request.user.is_authenticated:
@@ -102,12 +105,14 @@ def facebook(request):
 	next = ''
 	if request.GET:  
 		next = request.GET['next']
+	# get_access_token(request.user.username)
 
 	form = InstaIDForm(request.POST or None)
 	if form.is_valid():
 		insta_id = form.cleaned_data.get("insta_id")
 		instance = form.save(commit=False)
 		instance.save()
+		
 		if next == "":
 			return HttpResponseRedirect(reverse('blog:index'))
 		else:
@@ -123,6 +128,25 @@ def facebook(request):
 
 	}
 	return render(request, 'accounts/facebook_login.html', context)
+
+
+def get_access_token(username):
+	app_id = '510918386043485'
+	redirect_uri = 'http://localhost:8000/'
+	app_secret = '#################' # THIS IS IMPORTANT... DO NOT COMMIT WITH THIS app_secret HERE.
+	code_parameter = username
+
+	# base_url = "https://graph.facebook.com/v3.2/oauth/authorize?client_id={}&redirect_uri={}".format(app_id,redirect_uri)
+	# https://graph.facebook.com/oauth/authorize with your client_id and redirect_uri. 
+	# https://graph.facebook.com/oauth/access_token 
+	base_url = "https://graph.facebook.com/v3.2/oauth/access_token?client_id={}&redirect_uri={}&client_secret={}&code={}".format(app_id, redirect_uri, app_secret, code_parameter)
+
+	print(base_url + "\n")
+	req = requests.get(base_url)
+	response = req.json()
+	print(response)
+	
+
 
 
 def profile(request):

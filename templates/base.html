@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Insta2Blog | One click blog from your Instagram.">
+	<meta name="description" content="Insta2Blog | One click blog from your Instagram">
 	<meta name="author" content="Ali Khundmiri">
+	<title>{% block title %}Insta2Blog | One click blog from your Instagram{% endblock %}</title> <!-- MAX 70 Chars-->
 	{% block other_meta %}{% endblock %}
 
-	<title>{% block title %}Insta2Blog | One click blog from your Instagram.{% endblock %}</title> <!-- MAX 70 Chars-->
 
 	<link rel="apple-touch-icon" sizes="180x180" href="{% static 'base/apple-touch-icon.png' %}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'base/favicon-32x32.png' %}">
@@ -50,7 +50,8 @@ NOTE FROM FACEBOOK DOCUMENTS
 The Facebook SDK for JavaScript doesn't have any standalone files that need to be downloaded or installed, instead you simply need to include a short piece of regular JavaScript in your HTML that will asynchronously load the SDK into your pages. The async load means that it does not block loading other elements of your page.
 The following snippet of code will give the basic version of the Facebook SDK for JavaScript where the options are set to their most common defaults. Insert the following code snippet directly after the opening <body> tag on each page you want to use Facebook Analytics. Replace {your-app-id} with the App ID and {api-version} with the version of the API you are targeting. The current version isv3.2.
 -->
-<script>
+<!-- <script>
+	console.log('fbAsyncInit')
 	window.fbAsyncInit = function() {
 		FB.init({
 			appId      : '510918386043485',
@@ -58,22 +59,29 @@ The following snippet of code will give the basic version of the Facebook SDK fo
 			xfbml      : true,
 			version    : 'v3.2'
 		});
-		
+
+
 		FB.AppEvents.logPageView();
 		FB.getLoginStatus(function(response) {
 			statusChangeCallback(response);
 		});
+	    $(document).trigger('fbload');  //  <---- THIS RIGHT HERE TRIGGERS A CUSTOM EVENT CALLED 'fbload'
 		
 	};
-
 	(function(d, s, id){
+		console.log('function d s id')
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) {return;}
 		js = d.createElement(s); js.id = id;
 		js.src = "https://connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-</script>
+</script> -->
+
+
+{% block head_extras_body %}
+{% endblock %}
+
 {% endif %}
 <!-- Navigation -->
 {% include 'navbar.html' %}

@@ -7,7 +7,86 @@
 {{top_text}} | {{ block.super }}
 {% endblock %}
 
-{% block head_extras %}{% endblock %}
+{% block head_extras_body %}
+<script>
+	console.log('fbAsyncInit')
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '510918386043485',
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v3.2'
+		});
+
+
+		FB.AppEvents.logPageView();
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	    $(document).trigger('fbload');  //  <---- THIS RIGHT HERE TRIGGERS A CUSTOM EVENT CALLED 'fbload'
+		
+	};
+	(function(d, s, id){
+		console.log('function d s id')
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "https://connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	
+    console.log("opening page 1!");
+	
+    // 'fbload',  //  <---- HERE'S OUR CUSTOM EVENT BEING LISTENED FOR
+
+	FB.getLoginStatus(function(response) {
+		if (response.status === 'connected') {
+			var accessToken = response.authResponse.accessToken;
+		} 
+	} );
+    console.log("opening page 2!");
+
+	FB.getLoginStatus(function(response) {
+		if (response.status === 'connected') {
+    // The user is logged in and has authenticated your
+    // app, and response.authResponse supplies
+    // the user's ID, a valid access token, a signed
+    // request, and the time the access token 
+    // and signed request each expire.
+    var uid = response.authResponse.userID;
+    var accessToken = response.authResponse.accessToken;
+    console.log(accessToken)
+	alert(accessToken);
+    console.log("connected!");
+
+} 
+    else if (response.status === 'authorization_expired') {
+    // The user has signed into your application with
+    // Facebook Login but must go through the login flow
+    // again to renew data authorization. You might remind
+    // the user they've used Facebook, or hide other options
+    // to avoid duplicate account creation, but you should
+    // collect a user gesture (e.g. click/touch) to launch the
+    // login dialog so popup blocking is not triggered.
+    console.log("authorization_expired!");
+    var nnn = "dd"}
+    else if (response.status === 'not_authorized') {
+    // The user hasn't authorized your application.  They
+    // must click the Login button, or you must call FB.login
+    // in response to a user gesture, to launch a login dialog.
+    console.log("not_authorized!");
+    var nnn = "dd"}
+    else {
+    	console.log("Not_logged_in!");
+
+    // The user isn't logged in to Facebook. You can launch a
+    // login dialog with a user gesture, but the user may have
+    // to log in to Facebook before authorizing your application.
+}
+});	
+</script>
+
+{% endblock %}
 
 {% block content_2 %}
 <div class="row">
