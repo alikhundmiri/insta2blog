@@ -24,7 +24,11 @@ from . import views
 app_name = "accounts"
 
 urlpatterns = [
-    path('facebook/', views.facebook, name='facebook_login'),
+    path('facebook/', views.facebook_login, name='facebook_login'),
+	path('facebook_login_view/', views.facebook_login_view, name='facebook_login_view'),
+	path('facebook_get_code/', views.facebook_get_code, name='facebook_get_code'),
+	path('facebook_pages/', views.facebook_pages, name='facebook_pages'),
+    
     path('profile/', views.profile, name='profile'),
 
 ]

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %}
+{{top_text}} | {{ block.super }}
+{% endblock %}
+
+{% block head_extras_body %}
+<script>
+	console.log('fbAsyncInit')
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '510918386043485',
+			cookie     : true,
+			xfbml      : true,
+			version    : 'v3.2'
+		});
+
+
+		FB.AppEvents.logPageView();
+		FB.getLoginStatus(function(response) {
+			statusChangeCallback(response);
+		});
+	};
+</script>
+
+{% endblock %}
+
+{% block content_2 %}
+<div class="row">
+	<div class="col">
+		<h3>{{top_text}}</h3>
+		<h3><small>{{form_text}}</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+	</div>
+</div>
+{% endblock %}
+
+
