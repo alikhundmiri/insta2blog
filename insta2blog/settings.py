@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'd&^k@d9qatlj)6x&7n0stnzm^jowf25_b@=gh-r8q0h^8n+ryy')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
@@ -51,6 +51,13 @@ INSTALLED_APPS = [
     'accounts',
     'core',
     'blog',
+
+    # STUPID facebook API wont work with HTTP, they need HTTPS. This app below will help with that.
+    # run the command below instead of python manage.py runserver
+    # ./manage.py runserver_plus --cert /tmp/cert
+
+    "sslserver",
+
 
     'django.contrib.admin',
     'django.contrib.auth',

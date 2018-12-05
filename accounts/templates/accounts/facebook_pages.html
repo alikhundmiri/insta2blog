@@ -37,6 +37,28 @@
 </div>
 <div class="row">
 	<div class="col">
+		<!-- <div class="card-columns">
+			{% for i, j, k in zipped_list %}
+			<div class="card text-center">
+				<div class="card-body">
+					<h5 class="card-title">{{ i }}</h5>
+					<p class="card-text">{{ j }}</p>
+					<a href="#" class="btn btn-primary">Continue with this</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div> -->
+		<div class="card-columns">
+			{% for pages in all_pages %}
+			<div class="card text-center">
+				<div class="card-body">
+					<h5 class="card-title">{{ pages.name }}</h5>
+					<p class="card-text">{% if pages.instagram_business_account %} <i>Connected to Instagram Business Account</i> {% endif %}</p>
+					<a href="#" class="btn btn-primary">Continue with this</a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
 {% endblock %}
