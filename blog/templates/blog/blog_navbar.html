@@ -1,32 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="{% if request.user.is_authenticated %}{% url 'blog:blog_list' request.user.username %}{% else %}{% url 'blog:blog_list' requested_user %}{% endif %}">{% if request.user.is_authenticated %}My Blog{% else %}{{requested_user}}'s blog{% endif %}</a>
+		<a class="navbar-brand" href="">Blog</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu
 			<i class="fas fa-bars"></i>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			
-			<ul class="navbar-nav pull-left ml-auto">
+			{% if request.user.is_authenticated %}		
+			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="{% url 'accounts:facebook_login_view' %}">Connect to Instagram</a>
-					<!-- This is to be limited in future, Since I can allow only one account for free version, and up to 5 accounts for 15$ per month -->
+					<a class="nav-link" href="{% url 'accounts:profile' %}">profile</a>
 				</li>
 			</ul>
+			{% endif %}
 			<ul class="navbar-nav ml-auto">
-				{% if request.user.is_authenticated and request.user.username != requested_user %}
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'blog:blog_list' requested_user %}">
-					{{requested_user}}'s Home</a>
-				</li>
-				{% endif %}
 				<li class="nav-item">
 					<a class="nav-link" href="https://www.instagram.com">Instagram</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{% url 'blog:blog_latest' requested_user %}">Latest Post</a>
-				</li>
-
+				
 				{% if request.user.is_authenticated %}
 				<li class="nav-item">
 					<a class="nav-link" href="{% url 'logout' %}">logout</a>

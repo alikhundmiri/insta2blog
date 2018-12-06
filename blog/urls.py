@@ -25,11 +25,10 @@ app_name = "blog"
 
 urlpatterns = [
 	path('', views.index , name='index'),
-    path('@<str:username>/', include([
+    path('<str:insta_username>/', include([
 
         path('', views.blog_list, name='blog_list'),
         path('new/', views.blog_latest, name='blog_latest'),
-
         path('<slug:slug>/', views.blog_detail, name='blog_detail'),
 
     ])),

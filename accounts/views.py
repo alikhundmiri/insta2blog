@@ -246,7 +246,8 @@ def facebook_pages(request):
 
 @login_required
 def insta_account_setup(request, insta_id=None, user_access_token_=None):
-		# 
+	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
+		
 	"""
 		create an insta_account for this user.
 		CHECK THESE FIRST
@@ -270,10 +271,9 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 	# print(user_access_token_)
 
 	# This line uses the User Access Token
-	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
 	
 	bio = graph.get_object(id=insta_id, fields='biography,username')
-# user, insta_id, insta_username, bio,
+	# user, insta_id, insta_username, bio,
 	form = NewInstaAccount(request.POST or None)
 	if form.is_valid():
 		print('form is valid')
@@ -285,13 +285,10 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 		instance.insta_id = insta_id
 		instance.insta_username = bio['username']
 		instance.save()
-	
-	
-	print(bio['biography'])
-	print(bio['username'])
-	print(bio['id'])
-	
-	
+
+	# print(bio['biography'])
+	# print(bio['username'])
+	# print(bio['id'])
 	context = {
 		'top_text' : 'Setting up your Insta2blog settings',
 		'form_text' : 'help us help you.',
@@ -299,11 +296,13 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 		'production' : settings.PRODUCTION,	
 	}
 	return render(request, 'accounts/insta_account_setup.html', context)
-	
+
 @login_required
 def profile(request):
+	accounts = insta_account.objects.filter(user=request.user)
+	# print(accounts.count())
 	context = {
-
+		'accounts' : accounts,
 		'production' : settings.PRODUCTION,	
 	}
 	return render(request, 'accounts/profile.html', context)

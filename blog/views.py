@@ -2,53 +2,45 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, HttpResponseRedirect
 from django.conf import settings
 from django.urls import reverse
-
+from django.http import Http404
 import requests
 # Create your views here.
-
-
+from .models import blog
+# from accounts.models import insta_account
 def index(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect(reverse('newsletter:index'))
-	# else:
-	# 	return HttpResponseRedirect(reverse('accounts:profile'))
+	else:
 		pass
+		# return HttpResponseRedirect(reverse('accounts:profile'))
+
 	context = {
 		'production' : settings.PRODUCTION,
-		'requested_user' : request.user.username,
+	}
+	return render(request, 'accounts/profile.html', context)
+
+
+def blog_list(request, insta_username=None):
+
+	context = {
+		'production' : settings.PRODUCTION,
+		
 	}
 	return render(request, 'blog/blog_list.html', context)
 
 
-def blog_list(request, username=None):
-
-	url = 'https://graph.facebook.com/v3.2/17841404624166068/media?access_token=EAAHQrXToyl0BAPW0vfxXYJ1CqdgcPI64RoZBH9A1MsMnBmmqCPd7fDIYWAOyeCtDd7LR6g8SXCWczeyZBg35Ed8ZB96gMsbd2drFOfl7PgJKCl8KUZBMEwwkvSniBPCGXFCDZBGpZBDpGdf7FtFiFYgE6FHR9mYVoZAMPZA6tkanfF0y05nCpXyz61RPxNGL5G8ZD&pretty=0&fields=caption&limit=2'
-	req = requests.get(url)
-	response = req.json()
-
-	print(response)
-	
-	context = {
-		'production' : settings.PRODUCTION,
-		'requested_user' : username,
-	}
-	return render(request, 'blog/blog_list.html', context)
-
-
-def blog_latest(request, username=None):
+def blog_latest(request):
 	# if not request.user.is_authenticated:
 	# 	return HttpResponseRedirect(reverse('newsletter:index'))
 	context = {
 		'production' : settings.PRODUCTION,
-		'requested_user' : username,
 	}
 	return render(request, 'blog/blog_detail.html', context)
 
 
-def blog_detail(request, username=None):
+def blog_detail(request, insta_username=None, slug=None):
 	context = {
 		'production' : settings.PRODUCTION,
-		'requested_user' : username,
 	}
 	return render(request, 'blog/blog_detail.html', context)
 

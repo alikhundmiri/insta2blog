@@ -13,7 +13,27 @@
 <div class="row">
 	<div class="col">
 		<h3>Welcome {{request.user.username}}</h3>
-		<h3><small>You have # blogs published</small></h3>
+		<h3><small>You have {{accounts|length}} blog accounts</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		{% if accounts|length < 1 %}
+		<p>Looks like you dont have any Instagram accounts connected.</p>
+		<a href="{% url 'accounts:facebook_login_view' %}">Click here to Start Process</a>
+		{% else %}
+		{% for account in accounts %}
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">{{account.insta_username}}</h5>
+				<h6 class="card-subtitle mb-2 text-muted">Total Blog posts</h6>
+				<p class="card-text">{{account.bio|linebreaksbr}}</p>
+				<a href="/@{{account.insta_username}}" class="card-link">Blog</a>
+				<a href="https://instagram.com/{{account.insta_username}}" target="_blank" class="card-link">Instagram</a>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
 	</div>
 </div>
 {% endblock %}
