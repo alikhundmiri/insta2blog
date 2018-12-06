@@ -234,7 +234,9 @@ def facebook_pages(request):
 	# First verify it on https://developers.facebook.com/tools/explorer/, and then convert that URL to this 
 	# fetch statement.
 	# keep in mind, everythind after "me" should come in "fields". thats going through *args
-	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='name,id,access_token,instagram_business_account')
+	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='name,instagram_business_account{username,name,media_count,profile_picture_url,followers_count,follows_count,id}')
+	# for pages in all_pages:
+	# 	print(pages)
 
 	context = {
 		'all_pages' : all_pages,
@@ -246,8 +248,25 @@ def facebook_pages(request):
 	return render(request, 'accounts/facebook_pages.html', context)
 
 @login_required
+def insta_account_setup(request, insta_id=None):
+	print(insta_id)
+	# IMPORTANT, Since A USER ACCESS TOKEN IS IN USE AT THIS POINT, 
+	# WE DO NOT NEED TO UPDATE USER ACCESS TOKEN
 
+	"""
+		
+	"""
+	# fetch bio, set it to users_bio
+	# fetch username, set it to user's insta_username
 
+	context = {
+		'top_text' : 'Setting up your Insta2blog settings',
+		'form_text' : 'help us help you.',
+
+		'production' : settings.PRODUCTION,	
+	}
+	return render(request, 'accounts/insta_account_setup.html', context)
+	
 @login_required
 def profile(request):
 	context = {
@@ -275,11 +294,9 @@ def logout_view(request):
 
 ##########################
 # H E L P E R    F U N C T I O N S
-
 def update_access_token(access_token_):
 	graph = facebook.GraphAPI(access_token=access_token_ , version="3.2")
 	# return graph
-
 
 # Returns a Facebook login URL used to request an access token and permissions.
 def get_user_access_token():
@@ -315,7 +332,3 @@ def get_access_token_code(code_parameter, url_):
 
 	# Return the new user access token
 	return user_access_token
-
-
-# 
-# https://localhost:8000/account/facebook_get_code
