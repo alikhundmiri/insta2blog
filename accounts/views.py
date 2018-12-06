@@ -16,6 +16,7 @@ from django.contrib.auth import (
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 
 from .forms import UserLoginForm, UserRegisterForm, InstaIDForm
+from .models import insta_account
 
 import os
 import requests
@@ -165,7 +166,6 @@ def facebook_login(request):
 # STEP 2
 @login_required
 def facebook_login_view(request):
-	print("2 USER_ACCESS_TOKEN : " + USER_ACCESS_TOKEN)
 	# Check is user is online, connected to facebook.
 	# if facebook is connected, send to facebook_login_view.
 	# else, show facebook_login
@@ -186,7 +186,6 @@ def facebook_login_view(request):
 # STEP 3
 @login_required
 def facebook_get_code(request):
-	print("3 USER_ACCESS_TOKEN : " + USER_ACCESS_TOKEN)
 
 	#  This is a part of a series of redirects.
 	"""
@@ -225,7 +224,6 @@ def facebook_get_code(request):
 # STEP 4
 @login_required
 def facebook_pages(request):
-	# print("4 USER_ACCESS_TOKEN : " + USER_ACCESS_TOKEN)
 	# this page should show all the pages in user's account.
 	user_access_token_ = request.session.get('user_access_token_')
 
@@ -235,6 +233,7 @@ def facebook_pages(request):
 	# fetch statement.
 	# keep in mind, everythind after "me" should come in "fields". thats going through *args
 	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='name,instagram_business_account{username,name,media_count,profile_picture_url,followers_count,follows_count,id}')
+
 	# for pages in all_pages:
 	# 	print(pages)
 
@@ -249,12 +248,15 @@ def facebook_pages(request):
 
 @login_required
 def insta_account_setup(request, insta_id=None):
-	print(insta_id)
 	# IMPORTANT, Since A USER ACCESS TOKEN IS IN USE AT THIS POINT, 
 	# WE DO NOT NEED TO UPDATE USER ACCESS TOKEN
 
+	
 	"""
-		
+		create an insta_account for this user.
+		CHECK THESE FIRST
+			1. 
+	
 	"""
 	# fetch bio, set it to users_bio
 	# fetch username, set it to user's insta_username
@@ -307,7 +309,6 @@ def get_user_access_token():
 	graph = facebook.GraphAPI(access_token=app_id, version="3.2")
 
 	fb_login_url = graph.get_auth_url(app_id, canvas_url, perms)
-	# print("fb_login_url : "+ fb_login_url)
 	return fb_login_url
 
 # after login, we get a "code" or 'token'. this code will give us access_token
@@ -328,7 +329,6 @@ def get_access_token_code(code_parameter, url_):
 	
 	# UPDATE THE ACCESS TOKEN	
 	graph = facebook.GraphAPI(access_token=user_access_token, version="3.2")
-	print(str("Access Token after code : ")+ str(graph.access_token))
 
 	# Return the new user access token
 	return user_access_token

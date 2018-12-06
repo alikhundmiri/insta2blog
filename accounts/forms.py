@@ -8,7 +8,7 @@ from django.contrib.auth import (
     logout
 )
 
-from . models import insta_ids
+from . models import insta_account
 
 import re
 
@@ -58,13 +58,13 @@ class InstaIDForm(forms.ModelForm):
     insta_id = forms.CharField(label='Instagram ID',widget = forms.TextInput(attrs={'placeholder': 'Your Instagram ID here', 'class':'form-control'}))
 
     class Meta:
-        model = insta_ids
+        model = insta_account
         fields = [
             'insta_id'
         ]
     def clean_insta(self):
         id_ = self.cleaned_data.get('insta_id')
-        id_qs = insta_ids.objects.filter(insta_id=insta_id)
+        id_qs = insta_account.objects.filter(insta_id=insta_id)
         if id_qs.exists():
             raise forms.ValidationError("This Instagram account has already been registered.")
         return id_
