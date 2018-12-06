@@ -30,7 +30,6 @@ urlpatterns = [
 	path('facebook_pages/', views.facebook_pages, name='facebook_pages'),
 	path('facebook_get_code/', views.facebook_get_code, name='facebook_get_code'),
 	path('facebook_login_view/', views.facebook_login_view, name='facebook_login_view'),	
-	path('insta_account_setup/<int:insta_id>', views.insta_account_setup, name='insta_account_setup'),
+	path('insta_account_setup/<int:insta_id>/<str:user_access_token_>/', views.insta_account_setup, name='insta_account_setup'),
     
-
 ]

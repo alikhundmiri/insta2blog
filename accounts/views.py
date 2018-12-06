@@ -15,7 +15,7 @@ from django.contrib.auth import (
 )
 from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 
-from .forms import UserLoginForm, UserRegisterForm, InstaIDForm
+from .forms import UserLoginForm, UserRegisterForm, InstaIDForm, NewInstaAccount
 from .models import insta_account
 
 import os
@@ -34,7 +34,7 @@ PERMS_LIST = ["manage_pages","instagram_basic", "publish_pages", "pages_show_lis
 
 REDIRECT_BASE = 'https://localhost:8000/account/'
 
-graph = facebook.GraphAPI()
+# graph = facebook.GraphAPI()
 USER_ACCESS_TOKEN = ''
 
 def login_view(request):
@@ -219,8 +219,6 @@ def facebook_get_code(request):
 	}
 	return render(request, 'accounts/facebook_pages.html', context)
 
-
-
 # STEP 4
 @login_required
 def facebook_pages(request):
@@ -232,7 +230,7 @@ def facebook_pages(request):
 	# First verify it on https://developers.facebook.com/tools/explorer/, and then convert that URL to this 
 	# fetch statement.
 	# keep in mind, everythind after "me" should come in "fields". thats going through *args
-	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='name,instagram_business_account{username,name,media_count,profile_picture_url,followers_count,follows_count,id}')
+	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='access_token,name,instagram_business_account{username,name,media_count,profile_picture_url,followers_count,follows_count,id}')
 
 	# for pages in all_pages:
 	# 	print(pages)
@@ -247,20 +245,53 @@ def facebook_pages(request):
 	return render(request, 'accounts/facebook_pages.html', context)
 
 @login_required
-def insta_account_setup(request, insta_id=None):
-	# IMPORTANT, Since A USER ACCESS TOKEN IS IN USE AT THIS POINT, 
-	# WE DO NOT NEED TO UPDATE USER ACCESS TOKEN
-
-	
+def insta_account_setup(request, insta_id=None, user_access_token_=None):
+		# 
 	"""
 		create an insta_account for this user.
 		CHECK THESE FIRST
-			1. 
-	
-	"""
-	# fetch bio, set it to users_bio
-	# fetch username, set it to user's insta_username
+			1. how many accounts does user already has
+				* if free user, they can have only one account
+				* if $7 customer, they can have only one account
+				* if $30 user, they can have a max of 5 accounts
+				* A N Y W A Y S, if user is requesting, for more accounts, take them to payment page and ask them
+				to wait for me to write the code.
+			2. fetch the data required
+				* bio
+				* username, set it to user's insta_username
 
+				A D D I T I O N A L    D A T A,
+					Since I will be using the 'graph' again, I may have to use the new access tokens. these can be obtained from previous step.
+
+						graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
+						user_data = graph.get_all_connections(id='me', connection_name='media', fields='limit{10},caption')
+	"""
+	# print(insta_id)
+	# print(user_access_token_)
+
+	# This line uses the User Access Token
+	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
+	
+	bio = graph.get_object(id=insta_id, fields='biography,username')
+# user, insta_id, insta_username, bio,
+	form = NewInstaAccount(request.POST or None)
+	if form.is_valid():
+		print('form is valid')
+	else:
+		print('form is not valid')
+		instance = form.save(commit=False)
+		instance.user = request.user
+		instance.bio = bio['biography']
+		instance.insta_id = insta_id
+		instance.insta_username = bio['username']
+		instance.save()
+	
+	
+	print(bio['biography'])
+	print(bio['username'])
+	print(bio['id'])
+	
+	
 	context = {
 		'top_text' : 'Setting up your Insta2blog settings',
 		'form_text' : 'help us help you.',

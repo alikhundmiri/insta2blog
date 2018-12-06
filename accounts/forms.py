@@ -54,6 +54,17 @@ class UserRegisterForm(forms.ModelForm):
         return email
 
 
+class NewInstaAccount(forms.ModelForm):
+
+    class Meta:
+        model = insta_account
+        fields = ['user', 'insta_id', 'insta_username', 'bio']
+
+        # user, insta_id, insta_username, bio, 
+    def __init__(self, *args, **kwargs):
+        super(NewInstaAccount, self).__init__(*args, **kwargs)
+
+
 class InstaIDForm(forms.ModelForm):
     insta_id = forms.CharField(label='Instagram ID',widget = forms.TextInput(attrs={'placeholder': 'Your Instagram ID here', 'class':'form-control'}))
 

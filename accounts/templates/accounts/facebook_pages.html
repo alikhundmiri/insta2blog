@@ -95,8 +95,8 @@
 							</p>
 						</div>
 					</div>
-					<p></p>
-					<a href="{% url 'accounts:insta_account_setup' insta_id=pages.instagram_business_account.id %}" class="btn btn-sm btn-outline-primary">Connect with this</a>
+					<!-- <p></p> -->
+					<a href="{% url 'accounts:insta_account_setup' insta_id=pages.instagram_business_account.id user_access_token_=pages.access_token %}" class="btn btn-sm btn-outline-primary">Connect with this</a>
 					{% else %}
 					<h5 class="card-title text-muted">{{ pages.name }}</h5>
 					<p><small>Instagram Business Account Not Connected</small></p>
