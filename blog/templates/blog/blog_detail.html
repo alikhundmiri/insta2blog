@@ -4,7 +4,7 @@
 
 
 {% block title %}
-Title | {{ block.super }}
+{{blog.blog_title}}
 {% endblock %}
 
 {% block head_extras %}{% endblock %}
@@ -17,10 +17,10 @@ Title | {{ block.super }}
 		<div class="row">
 			<div class="col-lg-8 col-md-10 mx-auto">
 				<div class="post-heading">
-					<h1>Man must explore, and this is exploration at its greatest</h1>
+					<h1>{{blog.blog_title}}</h1>
 					<span class="meta">Post From 
 						<a href="#">Instagram</a>
-					on August 24, 2018</span>
+					on {{blog.timestamp}}</span>
 				</div>
 			</div>
 		</div>
@@ -32,7 +32,8 @@ Title | {{ block.super }}
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-10 mx-auto">
-				<p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+				{{blog.blog_post}}
+				<!-- <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
 
 				<h2 class="section-heading">The Final Frontier</h2>
 
@@ -51,7 +52,7 @@ Title | {{ block.super }}
 
 				<p>For more info
 					<a href="http://spaceipsum.com/">Click here</a>.</p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</article>

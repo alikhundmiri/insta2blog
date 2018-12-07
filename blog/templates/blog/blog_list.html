@@ -13,7 +13,7 @@
 			<div class="row">
 				<div class="col-lg-8 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1>'s Blogs</h1>
+						<h1>{{user.insta_username}}'s Blogs</h1>
 						<span class="subheading">You have # blogs published</span>
 					</div>
 				</div>
@@ -25,20 +25,35 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-10 mx-auto">
+				{% for blog in blogs %}
 				<div class="post-preview">
-					<a href="">
+					<a href="{% url 'blog:blog_detail' user.insta_username blog.blog_slug %}">
 						<h2 class="post-title">
-							Man must explore, and this is exploration at its greatest
+							{{blog.blog_title}}
 						</h2>
 						<h3 class="post-subtitle">
-							Problems look mighty small from 150 miles up
+							{{blog.blog_post|truncatechars:30}}
 						</h3>
 					</a>
-					<p class="post-meta"><a href="#">Open post in Instagram</a>
-					 | Posted: September 24, 2018</p>
+					<p class="post-meta"><a target="_blank" href="{{blog.insta_url}}">Open post in Instagram</a>
+					 | Posted: {{blog.timestamp}}</p>
 				</div>
 				<hr>
+				{% empty %}
 				<div class="post-preview">
+					<a href="" class="disabled">
+						<h2 class="post-title">
+							This Page is empty
+						</h2>
+						<h3 class="post-subtitle">
+							Come back later to read more!
+						</h3>
+					</a>
+<!-- 					<p class="post-meta"><a href="#">Open post in Instagram</a>
+					 | Posted: July 8, 2018</p> -->
+				</div>
+				{% endfor %}
+				<!-- <div class="post-preview">
 					<a href="">
 						<h2 class="post-title">
 							Failure is not an option
@@ -49,8 +64,8 @@
 					</a>
 					<p class="post-meta"><a href="#">Open post in Instagram</a>
 					 | Posted: July 8, 2018</p>
-				</div>
-				<hr>
+				</div> -->
+				<!-- <hr> -->
 				<!-- Pager -->
 				<!-- <div class="clearfix">
 					<a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>

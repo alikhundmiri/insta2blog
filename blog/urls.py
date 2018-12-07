@@ -29,7 +29,7 @@ urlpatterns = [
 
         path('', views.blog_list, name='blog_list'),
         path('new/', views.blog_latest, name='blog_latest'),
-        path('<slug:slug>/', views.blog_detail, name='blog_detail'),
+        path('<str:slug>/', views.blog_detail, name='blog_detail'),
 
     ])),
 

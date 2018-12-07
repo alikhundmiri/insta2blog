@@ -25,7 +25,6 @@ from accounts.views import (login_view, logout_view, register_view)
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('', include('blog.urls', namespace='blog')),
     path('welcome/', include('newsletter.urls', namespace='newsletter')),
     path('account/', include('accounts.urls', namespace='accounts')),
     
@@ -36,6 +35,8 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),
+
+    path('', include('blog.urls', namespace='blog')),
 
 ]
 
