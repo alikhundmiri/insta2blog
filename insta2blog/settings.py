@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-PRODUCTION = False
+PRODUCTION = True
 
 ALLOWED_HOSTS = [
 'https://insta2blog.herokuapp.com',
@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     # run the command below instead of python manage.py runserver
     # ./manage.py runserver_plus --cert /tmp/cert
 
-    "sslserver",
+    # "sslserver",
 
 
     'django.contrib.admin',
