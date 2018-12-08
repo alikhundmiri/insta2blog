@@ -13,6 +13,8 @@
 <div class="row">
 	<div class="col">
 		<h3>Welcome {{request.user.username}}</h3>
+		<h3 class="float-right"><a class="btn btn-sm btn-outline-danger" href="{% url 'accounts:facebook_login_view' %}"><i class="far fa-plus"></i> Add More</a></small></h3>
+
 		<h3><small>You have {{accounts|length}} blog accounts</small></h3>
 	</div>
 </div>
@@ -22,17 +24,27 @@
 		<p>Looks like you dont have any Instagram accounts connected.</p>
 		<a href="{% url 'accounts:facebook_login_view' %}">Click here to Start Process</a>
 		{% else %}
-		{% for account in accounts %}
-		<div class="card" style="width: 18rem;">
-			<div class="card-body">
-				<h5 class="card-title">{{account.insta_username}}</h5>
-				<h6 class="card-subtitle mb-2 text-muted">Total Blog posts</h6>
-				<p class="card-text">{{account.bio|linebreaksbr}}</p>
-				<a href="/{{account.insta_username}}" class="card-link">Blog</a>
-				<a href="https://instagram.com/{{account.insta_username}}" target="_blank" class="card-link">Instagram</a>
+		<div class="card-columns">
+			
+			{% for account in accounts %}
+			<div class="card">
+				<div class="card-body">
+					<a class="float-right" href=""><i class="fas fa-plus-square"></i> Update</a>
+					<h5 class="card-title">{{account.insta_username}}</h5>
+					<!-- <h6 class="card-subtitle mb-2 text-muted">{{account}}</h6> -->
+					<p class="card-text">{{account.bio|linebreaksbr}}</p>
+					<a href="/{{account.insta_username}}" class="card-link">Blog</a>
+					<a href="{% url 'accounts:blog_profile' account.insta_username %}" class="card-link">Settings</a>
+					<a href="https://instagram.com/{{account.insta_username}}" target="_blank" class="card-link"><i class="fab fa-instagram"></i></a>
+				</div>
+				<div class="card-footer">
+					<a href="{% url 'accounts:blog_profile' account.insta_username %}" class="card-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a><br>
+				</div>
+
 			</div>
+			{% endfor %}
 		</div>
-		{% endfor %}
+
 		{% endif %}
 	</div>
 </div>

@@ -84,8 +84,22 @@ The following snippet of code will give the basic version of the Facebook SDK fo
 
 {% endif %}
 <!-- Navigation -->
-{% include 'navbar.html' %}
 
+
+
+
+{% include 'navbar.html' %}
+{% if messages %}
+{% for message in messages %}
+<!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+	{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+{% endfor %}
+{% endif %}
 {% block content_1 %}
 {% endblock %}
 

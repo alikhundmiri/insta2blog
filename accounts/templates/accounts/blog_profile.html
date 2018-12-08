@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block title %}
+{{request.user.username}}'s Profile | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}{% endblock %}
+
+{% block content_2 %}
+<div class="row">
+	<div class="col">
+		<h3>Welcome {{request.user.username}}</h3>
+		<h3><small>{{profile}}</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<div style="margin-top: 50px"></div>
+		<h4 class="text-muted">
+			<i class="fas fa-cogs"></i> Settings
+		</h4>
+
+		<table class="table">
+			<tr style="border: none;">
+				<th style="border: none;">Settings</th>
+				<td style="border: none;"><p class="text-muted">Coming soon</p></td>
+			</tr>
+			<tr style="border: none;">
+				<th style="border: none;">Fetch New Post</th>
+				<td style="border: none;"><p class="text-muted">Coming soon</p></td>
+			</tr>
+			<tr style="border: none;">
+				<th style="border: none;">Change Bio</th>
+				<td style="border: none;"><p class="text-muted">Coming soon</p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div style="margin-top: 50px"></div>
+		<h4 class="float-right"><a href=""><i class="fas fa-plus-square"></i> Add</a></h4>
+		<h4 class="text-muted">
+			<i class="fas fa-th-list"></i> List of all blogs
+		</h4>
+		<table class="table">
+			<thead>
+				<th>Blog Title</th>
+				<td>View</td>
+				<td>Edit</td>
+				<td>Delete</td>
+				<td>Draft</td>
+			</thead>
+			{% for blog in blog_posts %}
+			<tr>
+				<th>{{blog.blog_title}}</th>
+				<td><a href="{% url 'blog:blog_detail' profile.insta_username blog.blog_slug %}"><i class="fas fa-eye"></i></a></td>
+				<td><a href=""><i class="fas fa-edit"></i></a></td>
+				<td><a href=""><i class="fas fa-trash-alt"></i></a></td>
+				<td><a href=""><i class="fas fa-eye-slash"></i></a></td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td colspan="5" style="text-align: center;"><h5 class="text-muted">Looks like you dont have any blogs post yet.</h5></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<hr>
+	</div>
+</div>
+{% endblock %}

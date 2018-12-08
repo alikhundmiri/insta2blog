@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block head_extras_body %}
-<script>
+<!-- <script>
 	console.log('fbAsyncInit')
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -25,7 +25,7 @@
 		});
 	};
 </script>
-
+-->
 {% endblock %}
 
 {% block content_2 %}
@@ -35,26 +35,18 @@
 		<h3><small>{{form_text}}</small></h3>
 	</div>
 </div>
+<br>
+<br>
+<br>
 <div class="row">
 	<div class="col">
-		<!-- <div class="card-columns">
-			{% for i, j, k in zipped_list %}
-			<div class="card text-center">
-				<div class="card-body">
-					<h5 class="card-title">{{ i }}</h5>
-					<p class="card-text">{{ j }}</p>
-					<a href="#" class="btn btn-primary">Continue with this</a>
-				</div>
-			</div>
-			{% endfor %}
-		</div> -->
 		<div class="card-columns">
 			{% for pages in all_pages %}
-			<div class="card">
+			{% if pages.instagram_business_account %}
+			<div class="card border-primary">
 				<div class="card-body text-center">
-					{% if pages.instagram_business_account %}
-					<h5 class="card-title">{{ pages.name }}</h5>
-					<p><small>Instagram Business Account Connected</small></p>
+					<h5 class="card-title text-muted">{{ pages.name }}</h5>
+					<p><small><i class="fas fa-check"></i> Instagram Business Account Connected</small></p>
 					<hr>
 					<img src="{{pages.instagram_business_account.profile_picture_url}}" height="112" width="112" style="margin: 10px; padding: 10px">
 
@@ -64,7 +56,6 @@
 							<a target="_blank" href="https://instagram.com/{{pages.instagram_business_account.username}}"> {{pages.instagram_business_account.username}}
 							</a>
 						</small>
-
 					</h6>
 					<div class="row">
 						<div class="col-4">
@@ -95,19 +86,36 @@
 							</p>
 						</div>
 					</div>
-					<!-- <p></p> -->
-					<a href="{% url 'accounts:insta_account_setup' insta_id=pages.instagram_business_account.id user_access_token_=pages.access_token %}" class="btn btn-sm btn-outline-primary">Connect with this</a>
-					{% else %}
+					<a href="{% url 'accounts:insta_account_setup' insta_id=pages.instagram_business_account.id user_access_token_=pages.access_token %}" class="btn btn-sm btn-outline-primary">
+						Connect with this
+					</a>
+				</div>
+			</div>
+			{% else %}
+			<div class="card border-dark">
+				<div class="card-body text-center">
 					<h5 class="card-title text-muted">{{ pages.name }}</h5>
 					<p><small>Instagram Business Account Not Connected</small></p>
 					<hr>
-					{% endif %}
 				</div>
 			</div>
+			{% endif %}
+
 			{% endfor %}
+
 		</div>
 	</div>
 </div>
+<br>
+<br>
+<br>
+<div class="row">
+	<div class="col">
+		<h4 class="text-muted">Cant find your Instagram Account?</h4>
+		<a href="">Learn how to setup your account on Facebook and Instagram.</a>
+	</div>
+</div>
+
 {% endblock %}
 
 

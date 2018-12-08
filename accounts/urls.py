@@ -27,9 +27,17 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
 
     path('facebook/', views.facebook_login, name='facebook_login'),
-	path('facebook_pages/', views.facebook_pages, name='facebook_pages'),
-	path('facebook_get_code/', views.facebook_get_code, name='facebook_get_code'),
-	path('facebook_login_view/', views.facebook_login_view, name='facebook_login_view'),	
-	path('insta_account_setup/<int:insta_id>/<str:user_access_token_>/', views.insta_account_setup, name='insta_account_setup'),
+	# STEP 2
+    path('facebook_login_view/', views.facebook_login_view, name='facebook_login_view'),	
+    # STEP 3, Auto redirected
+    path('facebook_get_code/', views.facebook_get_code, name='facebook_get_code'),
+	# STEP 4
+    path('facebook_pages/', views.facebook_pages, name='facebook_pages'),
+    # STEP 5 : The profile page
+    path('insta_account_setup/<int:insta_id>/<str:user_access_token_>/', views.insta_account_setup, name='insta_account_setup'),
+    # STEP 6 : The profile page
+    path('profile/<str:insta_username>/', views.blog_profile, name='blog_profile'),
+
+    
     
 ]

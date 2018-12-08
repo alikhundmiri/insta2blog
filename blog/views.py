@@ -11,8 +11,8 @@ def index(request):
 	if not request.user.is_authenticated:
 		return HttpResponseRedirect(reverse('newsletter:index'))
 	else:
-		pass
-		# return HttpResponseRedirect(reverse('accounts:profile'))
+		# pass
+		return HttpResponseRedirect(reverse('accounts:profile'))
 
 	context = {
 		'production' : settings.PRODUCTION,
@@ -27,11 +27,13 @@ def blog_list(request, insta_username=None):
 	else:
 		raise Http404
 	# get the blog list
-	print(check_account.insta_id)
+	# print(check_account.insta_id)
 	blogs = blog.objects.filter(insta_id__insta_username=check_account.insta_username)
-	print(blogs)
-	for blog_ in blogs:
-		print(blog_)
+
+	# print(blogs)
+	# for blog_ in blogs:
+	# 	print(blog_)
+
 	context = {
 		'insta_username' : insta_username,
 		'user'	: check_account,
@@ -46,7 +48,7 @@ def blog_list(request, insta_username=None):
 def blog_detail(request, insta_username=None, slug=None):
 	# get the blog post
 	blog_post = get_object_or_404(blog, insta_id__insta_username=insta_username, blog_slug=slug)
-	print(blog_post)
+	# print(blog_post)
 	context = {
 		'insta_username' : insta_username,
 		'blog' : blog_post,

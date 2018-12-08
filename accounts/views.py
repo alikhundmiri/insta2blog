@@ -17,7 +17,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_
 
 from .forms import UserLoginForm, UserRegisterForm, InstaIDForm, NewInstaAccount
 from .models import insta_account
-
+from blog.models import blog
 import os
 import requests
 import facebook
@@ -173,10 +173,8 @@ def facebook_login_view(request):
 	# This will get the link to login to the facebook app.
 	facebook_login_url = get_user_access_token()
 	context = {
-		'top_text' : 'Login to facebook',
-		'form_text' : 'For accessing to instagram account, we need to login via your facebook, if you are already logged in, click "Continue"',
 		'production' : settings.PRODUCTION,
-		'tab_text' : 'Continue With Facebook',
+		'tab_text' : 'Continue',
 		'facebook_login_url' : facebook_login_url,
 
 	}
@@ -232,12 +230,25 @@ def facebook_pages(request):
 	# keep in mind, everythind after "me" should come in "fields". thats going through *args
 	all_pages = graph.get_all_connections(id='me', connection_name='accounts', fields='access_token,name,instagram_business_account{username,name,media_count,profile_picture_url,followers_count,follows_count,id}')
 
-	# for pages in all_pages:
-	# 	print(pages)
+	"""
+	now i need to stop use from registering with the same account multiple times.
+	Therefore now here we will fetch all the accounts created by use and disable the button to
+	accounts the user has already registered
+	"""
 
+	# fetch all the accounts by request.user
+
+	current_accounts = insta_account.objects.filter(user=request.user)
+
+	# for page in all_pages:
+	# 	if page.instagram_business_account.name in current_accounts:
+	# 		print("registered")
+	# 	else:
+	# 		print("New Account")
 	context = {
 		'all_pages' : all_pages,
-		# 'zipped_list' : zipped_list,
+
+		'current_accounts' : current_accounts,
 		'production' : settings.PRODUCTION,
 		'top_text' : 'Select Facebook Page',
 		'form_text' : 'Please Select the facebook Page which is connected to the Instagram Account you wish to Use.',
@@ -246,6 +257,7 @@ def facebook_pages(request):
 
 @login_required
 def insta_account_setup(request, insta_id=None, user_access_token_=None):
+
 	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
 		
 	"""
@@ -274,6 +286,23 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 	
 	bio = graph.get_object(id=insta_id, fields='biography,username')
 	# user, insta_id, insta_username, bio,
+
+	try:
+		check_duplicate = insta_account.objects.get(insta_id=insta_id)
+
+		messages.warning(request, "The Account  ({}) is already registered".format(bio['username']))
+		return HttpResponseRedirect(reverse('accounts:facebook_pages'))
+
+	except insta_account.DoesNotExist:
+		pass
+
+
+	try:
+		user_bio = bio['biography']
+	except Exception as e:
+		user_bio = None
+
+
 	form = NewInstaAccount(request.POST or None)
 	if form.is_valid():
 		print('form is valid')
@@ -281,21 +310,36 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 		print('form is not valid')
 		instance = form.save(commit=False)
 		instance.user = request.user
-		instance.bio = bio['biography']
+		instance.bio = user_bio
 		instance.insta_id = insta_id
 		instance.insta_username = bio['username']
 		instance.save()
 
-	# print(bio['biography'])
-	# print(bio['username'])
-	# print(bio['id'])
+	return HttpResponseRedirect(reverse('accounts:facebook_page_profile', args=(bio['username'])))
+
 	context = {
 		'top_text' : 'Setting up your Insta2blog settings',
-		'form_text' : 'help us help you.',
+		'form_text' : 'Please wait, this page will redirect soon...',
 
 		'production' : settings.PRODUCTION,	
 	}
 	return render(request, 'accounts/insta_account_setup.html', context)
+
+
+@login_required
+def blog_profile(request, insta_username=None):
+	# profile details
+
+	profile = insta_account.objects.get(insta_username=insta_username)
+	# print(profile)
+	blog_posts = blog.objects.filter(insta_id__insta_username=insta_username).order_by("-timestamp")[:10]
+
+	context = {
+	'profile' : profile,
+	'blog_posts' : blog_posts,
+	'production' : settings.PRODUCTION,	
+	}
+	return render(request, 'accounts/blog_profile.html', context)
 
 @login_required
 def profile(request):

@@ -27,10 +27,16 @@ Get Updates | {{ block.super }}
 		<div class="row justify-content-md-center">
 			<div class="col-lg-8">
 				
-				<h3 class="text-primary">Looks like you've caught us in development mode.</h3>
+				<h3 class="text-primary">Looks like you've caught us in Alpha Version.</h3>
 				<!-- <p class="lead mb-0">Looks like you've caught us in development mode.</p> -->
-				<p>I am working hard to bring Insta<b class="text-primary">2Blog</b> to life. Things are looking up for this us here, and we should be ready in a few days. If you'd like us to send you a remainder when Insta<b class="text-primary">2Blog</b> is ready, just put your email address below!</p>
-				
+				<p>
+					I am working hard to bring Insta<b class="text-primary">2Blog</b> to life. The things are in motion.
+					<br> Right now you can Register for free.
+					<br>
+					<br>
+					<a class="btn btn-lg btn-outline-primary" href="{% url 'register' %}">Register</a>
+					<br><br><hr> If you'd like us to send you a remainder when Insta<b class="text-primary">2Blog</b> Pro is ready, just put your email address below!
+				</p>
 				<br>
 				<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
 					{{ form|crispy }}
