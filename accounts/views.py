@@ -278,12 +278,7 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 
 						graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
 						user_data = graph.get_all_connections(id='me', connection_name='media', fields='limit{10},caption')
-	"""
-	# print(insta_id)
-	# print(user_access_token_)
-
-	# This line uses the User Access Token
-	
+	"""	
 	bio = graph.get_object(id=insta_id, fields='biography,username')
 	# user, insta_id, insta_username, bio,
 
@@ -302,7 +297,6 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 	except Exception as e:
 		user_bio = None
 
-
 	form = NewInstaAccount(request.POST or None)
 	if form.is_valid():
 		print('form is valid')
@@ -314,8 +308,7 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 		instance.insta_id = insta_id
 		instance.insta_username = bio['username']
 		instance.save()
-
-	return HttpResponseRedirect(reverse('accounts:facebook_page_profile', args=(bio['username'])))
+		return HttpResponseRedirect(reverse('accounts:facebook_page_profile', args=(insta_id, user_access_token_)))
 
 	context = {
 		'top_text' : 'Setting up your Insta2blog settings',
@@ -325,6 +318,29 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 	}
 	return render(request, 'accounts/insta_account_setup.html', context)
 
+@login_required
+def facebook_page_profile(request, insta_id=None, user_access_token_=None):
+	
+	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
+	
+	posts = "Get previous 10 posts"#graph.get_object(id=insta_id, fields='biography,username')
+	'''
+		1. Get ten posts using graph.get_objects()
+		2. For each instagram post, Create blog post.
+		3. redirect to blog_profile.
+
+		ALSO:
+		Create a form for new blog post.
+		use bulk_create
+	'''
+
+	context = {
+		'top_text' : 'Creating 10 blog posts from last 10 posts.',
+		'form_text' : 'Please do not refresh. We are working in the backgound. This page will redirect soon...',
+
+		'production' : settings.PRODUCTION,
+	}
+	return render(request, 'accounts/insta_account_setup.html', context)
 
 @login_required
 def blog_profile(request, insta_username=None):
