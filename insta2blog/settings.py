@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     # run the command below instead of python manage.py runserver
     # ./manage.py runserver_plus --cert /tmp/cert
 
-    # "sslserver",
+    "sslserver",
 
 
     'django.contrib.admin',
