@@ -21,11 +21,12 @@ def index(request):
 
 
 def blog_list(request, insta_username=None):
-	check_account = insta_account.objects.get(insta_username=insta_username)
-	if check_account:
-		pass
-	else:
-		raise Http404
+
+	try:
+		check_account = insta_account.objects.get(insta_username=insta_username)
+	except Exception as e:
+		return render(request, 'error_404.html')
+
 	# get the blog list
 	# print(check_account.insta_id)
 	blogs = blog.objects.filter(insta_id__insta_username=check_account.insta_username)
@@ -47,8 +48,11 @@ def blog_list(request, insta_username=None):
 
 def blog_detail(request, insta_username=None, slug=None):
 	# get the blog post
-	blog_post = get_object_or_404(blog, insta_id__insta_username=insta_username, blog_slug=slug)
-	# print(blog_post)
+	try:
+		blog_post = get_object_or_404(blog, insta_id__insta_username=insta_username, blog_slug=slug)
+	except Exception as e:
+		return render(request, 'error_404.html')
+	
 	context = {
 		'insta_username' : insta_username,
 		'blog' : blog_post,
@@ -58,11 +62,11 @@ def blog_detail(request, insta_username=None, slug=None):
 
 
 def blog_latest(request, insta_username=None):
-	check_account = insta_account.objects.get(insta_username=insta_username)
-	if check_account:
-		pass
-	else:
-		raise Http404
+	try:
+		check_account = insta_account.objects.get(insta_username=insta_username)
+	except Exception as e:
+		return render(request, 'error_404.html')
+
 	# get the latest blog post for the given user.
 	blog_post = get_object_or_404(blog, insta_id__insta_username=insta_username).order_by('-id')[0]
 	context = {

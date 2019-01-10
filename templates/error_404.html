@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Error 404! Everything is under control, Please STAY CALM | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+
+{% block content_2 %}
+
+<h1><span class="text-muted">Oops!</span>
+</h1>
+
+<h3>
+    ERROR 404: Page not found.
+</h3>
+<p>Looks like, What you are looking for... doesn't exist <sup>yet</sup>.</p>
+
+
+<p>Insta2blog.com is still in beta and this might happen. I am working to fix it.</p>
+
+
+<h3>Contact Me</h3>
+<p>If you are seeing this quite often, please contact me:</p>
+<ul>
+    <li>By email: alikhundmiri.developer@gmail.com</li>
+    <li>on Instagram: <a href="https://www.instagram.com/alicodermaker">Alicodermaker</a></li>
+    <li>on Twitter: <a href="https://www.twitter.com/alicodermaker">Alicodermaker</a></li>
+
+</ul>
+
+{% endblock %}
