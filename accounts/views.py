@@ -295,7 +295,7 @@ def insta_account_setup(request, insta_id=None, user_access_token_=None):
 	try:
 		user_bio = bio['biography']
 	except Exception as e:
-		user_bio = None
+		user_bio = "Hey, We are Using Insta2blog to make this blog!"
 
 	form = NewInstaAccount(request.POST or None)
 	if form.is_valid():
@@ -323,7 +323,14 @@ def facebook_page_profile(request, insta_id=None, user_access_token_=None):
 	
 	graph = facebook.GraphAPI(access_token=user_access_token_ , version="3.2")
 	
-	posts = "Get previous 10 posts"#graph.get_object(id=insta_id, fields='biography,username')
+	# "Get previous 10 posts"
+	
+	# user_info = graph.get_object(id=insta_id, fields='biography,username')
+
+	user_posts = graph.get_object(id=insta_id, fields='media.limit(10){caption,media_type,media_url,thumbnail_url}')
+
+	print(user_posts)
+
 	'''
 		1. Get ten posts using graph.get_objects()
 		2. For each instagram post, Create blog post.

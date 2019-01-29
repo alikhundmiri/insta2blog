@@ -26,20 +26,24 @@ app_name = "accounts"
 urlpatterns = [
     path('profile/', views.profile, name='profile'),
 
+    # STEP 1 : click on facebook icon to login
     path('facebook/', views.facebook_login, name='facebook_login'),
-	# STEP 2
+	
+    # STEP 2 : 
     path('facebook_login_view/', views.facebook_login_view, name='facebook_login_view'),	
-    # STEP 3, Auto redirected
+    
+    # STEP 3 : Auto redirected
     path('facebook_get_code/', views.facebook_get_code, name='facebook_get_code'),
-	# STEP 4
+	
+    # STEP 4 : 
     path('facebook_pages/', views.facebook_pages, name='facebook_pages'),
+    
     # STEP 5 : The profile page
     path('insta_account_setup/<int:insta_id>/<str:user_access_token_>/', views.insta_account_setup, name='insta_account_setup'),
+    
     # Step 6 : add 10 blog posts
     path('facebook_page_profile/<int:insta_id>/<str:user_access_token_>/', views.facebook_page_profile, name='facebook_page_profile'),
-    # STEP 6 : The profile page
-    path('profile/<str:insta_username>/', views.blog_profile, name='blog_profile'),
-
     
-    
+    # STEP 7 : The profile page
+    path('profile/<str:insta_username>/', views.blog_profile, name='blog_profile'),    
 ]
